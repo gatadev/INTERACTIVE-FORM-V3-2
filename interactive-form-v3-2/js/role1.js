@@ -1,10 +1,12 @@
-//select the dropdown menu to 
-var jobRole = document.getElementById('title');
+var jobRole = document.querySelector("#title option[value='other']");
+
 //add an eventListener to jobRole then show other job role
-jobRole.addEventListener('click', function(e){
-   var targetValue = e.target;
-   if(targetValue ==='e.target.value'){
-    return secondJobRole.style.display='block';
-   }
-    
+jobRole.addEventListener("change", (e) => {
+    //var jobRoleValue = e.target.value;
+    if(jobRole.selected===true){
+       return secondJobRole.style.display="block";
+    } else{
+        return secondJobRole.style.display="none";
+    }
+
 });
