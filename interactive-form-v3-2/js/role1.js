@@ -1,4 +1,4 @@
-var jobRole = document.querySelector("#title option[value='other']");
+/*** var jobRole = document.querySelector("#title option[value='other']");
 
 //add an eventListener to jobRole then show other job role
 jobRole.addEventListener("change", (e) => {
@@ -10,3 +10,4 @@ jobRole.addEventListener("change", (e) => {
     }
 
 });
+****/
