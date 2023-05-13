@@ -1,7 +1,5 @@
 
 
-
-
 //get the value of the input element 
 var inputElement = document.getElementById('name').Value;
 // create function for the focus state
@@ -55,13 +53,14 @@ var hideColorMenuByDefault = !function(){
  console.log(color);
  //EventListener to designTheme
  designTheme.addEventListener('change', (e)=>{
-   colorMenu.setAttribute('disabled', false);
-   var loopOverOptions = document.getElementsByTagName('select option[value]');
-   //console.log(loopOver);
+   colorMenu.disabled = false;
+   var loopOverOptions = document.querySelectorAll('[data-theme]');
+   //console.log('Selected Design: ', designTheme.value);
    loopOverOptions.forEach(option => {
       var loopValue = e.target.value;
-      var dataTheme = document.getAttribute('data-theme');
-      if( loopOver.hidden === dataTheme.hidden){
+      dataTheme = option.getAttribute('data-theme');
+      //console.log('Color Options Theme: ', dataTheme);
+      if( loopOverOptions.selected === dataTheme.selected){
         option.getAttribute('disabled', true);
         
           
