@@ -89,23 +89,17 @@ let activity = document.getElementById('activities');
 activity.addEventListener('change', (e) => {
   
   
-  let currentElementAffected = Number(e.target.getAttribute('p'));
+  let currentElementAffected = parseInt(e.target.getAttribute(["data-cost"]))
   console.log(currentElementAffected);
   //condition to check and check 
   if (e.target.checked == true){
-    e.target += currentElementAffected;
+    initialCost += currentElementAffected;
   } else if (e.target.checked == false){
 
-    e.target -= currentElementAffected;
+    initialCost -= currentElementAffected;
   }
-  `<p id="activities-cost" class="activities-cost">Total: ${p.innerHtml = currentElementAffected}</p>`
+  p.innerHtml =`Total:$${initialCost}`;
 });
-
-
-
-
-
-
 
 
 
