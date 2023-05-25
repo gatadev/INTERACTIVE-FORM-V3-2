@@ -58,20 +58,54 @@ var hideColorMenuByDefault = !function(){
    //console.log('Selected Design: ', designTheme.value);
    loopOverOptions.forEach(option => {
       var loopValue = e.target.value;
+      console.log('here is the value ', loopValue);
       dataTheme = option.getAttribute('data-theme');
       //console.log('Color Options Theme: ', dataTheme);
-      if( loopOverOptions.selected === dataTheme.selected){
-        option.getAttribute('disabled', true);
+      if( loopValue === dataTheme){
+        option.style.display ='';
         
           
         
 
       }else{
-        option.getAttribute('disabled', false);
+        option.style.display ='none';
       }
       
    })
   
  })
+
+ //Register for activities section
+ // reference to legend in fieldset
+ let legendActivities = document.querySelector("#activities legend");
+ console.log(legendActivities);
+ //total p cost
+ let p = document.getElementById("activities-cost");
+ console.log(p);
+ // total cost of activity
+let initialCost = 0;
+let activity = document.getElementById('activities');
+//event handler on change 
+activity.addEventListener('change', (e) => {
+  
+  
+  let currentElementAffected = Number(e.target.getAttribute('p'));
+  console.log(currentElementAffected);
+  //condition to check and check 
+  if (e.target.checked == true){
+    e.target += currentElementAffected;
+  } else if (e.target.checked == false){
+
+    e.target -= currentElementAffected;
+  }
+  `<p id="activities-cost" class="activities-cost">Total: ${p.innerHtml = currentElementAffected}</p>`
+});
+
+
+
+
+
+
+
 
 
