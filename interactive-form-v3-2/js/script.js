@@ -98,8 +98,32 @@ activity.addEventListener('change', (e) => {
 
     initialCost -= currentElementAffected;
   }
-  p.innerHtml =`Total:$${initialCost}`;
+  p.innerHTML =`Total:$${initialCost}`;
 });
 
+//payment info
+let paymentOption = document.querySelector('.payment-method-box label').textContent;
+console.log(paymentOption);
+let user_payment = document.getElementById('payment');
+let creditCardPayment = document.querySelector("#payment option[value = 'credit-card']");
+console.log(creditCardPayment);
+let paypalCardPayment = document.querySelector("#payment option[value = 'paypal']");
+console.log(paypalCardPayment);
+let bitcoinPayment = document.querySelector("#payment option[value = 'bitcoin']");
+console.log(bitcoinPayment);
+//Use the "paypal" and "bitcoin" variables above to hide these elements initially.
+let hidePaypalCardPayment = paypalCardPayment.style.display='none';
+let hideBitcoinPayment = bitcoinPayment.style.display ='none';
 
-
+//  change event on payment 
+user_payment.addEventListener('change', (e) => {
+  let paymentMethod = document.querySelector('.payment-methods').innerHTML;
+  console.log(paymentMethod);
+  if(e.target=== paymentMethod.id){
+    return paymentMethod;
+    
+  }else {
+    paymentMethod[id].style.display ='none';
+  }
+})
+ 
