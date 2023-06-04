@@ -101,44 +101,89 @@ activity.addEventListener('change', (e) => {
   p.innerHTML =`Total:$${initialCost}`;
 });
 
-//payment info
-let paymentOption = document.querySelector('.payment-method-box label').textContent;
+// payment option
+let paymentOption = document.querySelector('#payment');
+
 console.log(paymentOption);
-let user_payment = document.getElementById('payment');
-let creditCardPayment = document.querySelector("#payment option[value = 'credit-card']");
-console.log(creditCardPayment);
-let paypalCardPayment = document.querySelector("#payment option[value = 'paypal']");
-console.log(paypalCardPayment);
-let bitcoinPayment = document.querySelector("#payment option[value = 'bitcoin']");
-console.log(bitcoinPayment);
-//Use the "paypal" and "bitcoin" variables above to hide these elements initially.
-//let hidePaypalCardPayment = paypalCardPayment.style.display='none';
-//let hideBitcoinPayment = bitcoinPayment.style.display ='none';
-//let hideCreditCardPayment = creditCardPayment.style.display ='none';
-//  change event on payment 
-user_payment.addEventListener('change', (e) => {
-  let paymentMethod = document.querySelector('.payment-methods').innerHTML;
-  console.log(paymentMethod);
-  if(e.target.value== creditCardPayment){
-    let hidePaypalCardPayment = paypalCardPayment.style.display='none';
-    let hideBitcoinPayment = bitcoinPayment.style.display ='none';
-      
+//credit card payment
+ let creditCard = document.querySelector('#credit-card');
+ console.log(creditCard);
+// paypal payment 
+let paypal = document.querySelector('#paypal');
+console.log(paypal);
+//bitcoin payment
+let bitcoin = document.querySelector('#bitcoin');
+console.log(bitcoin);
 
-    
-  }else if(e.target.value==paypalCardPayment){
-    let hideBitcoinPayment = bitcoinPayment.style.display ='none';
-    let hideCreditCardPayment = creditCardPayment.style.display ='none';
-    
-   // hideCreditCardPayment;
+ function showCreditCard(){
+   creditCard.style.display ='block'
+}
+showCreditCard();
+function hideCreditCard(){
+   creditCard.style.display ='none';
+}
+hideCreditCard();
 
+function showPaypal(){
+  paypal.style.display = 'block'
+}
+showPaypal();
+
+function hidePaypal(){
+  paypal.style.display ='none';
+}
+hidePaypal();
+
+function showBitcoin(){
+  bitcoin.style.display ='block';
+}
+showBitcoin();
+function hideBitcoin(){
+  bitcoin.style.display ='none';
+}
+hideBitcoin();
+
+
+//addEventListener on payment method
+paymentOption.addEventListener('change', (e) => {
+  if(e.target.value == 'credit-card'){
+    showCreditCard();
   } else {
-
-    let hideCreditCardPayment = creditCardPayment.style.display ='none';
-    let hidePaypalCardPayment = paypalCardPayment.style.display='none';
-     
-      
-
+    hideCreditCard();
   }
-    
+  if(e.target.value =='paypal'){
+   showPaypal();
+  } else {
+    hidePaypal();
+  }
+  if(e.target.value == 'bitcoin'){
+  showBitcoin();
+
+  }else {
+   hideBitcoin();
+  }
+})
+
+// input validation
+//email
+let  emailInput = document.querySelector('#email').value;
+console.log(emailInput);
+//credit card number
+let  creditCardNumber  = document.querySelector('#cc-num').value;
+
+console.log(creditCardNumber);
+//zip code
+let  zipCode  = document.querySelector('#zip').value;
+console.log(zipCode);
+//cvv
+let  threeDigitNumber  = document.querySelector('#cvv').value;
+console.log(threeDigitNumber);
+//reference to form
+let form = document.querySelector('form');
+console.log(form);
+
+//submit event
+
+form.addEventListener('submit', (e) => {
   
 })
