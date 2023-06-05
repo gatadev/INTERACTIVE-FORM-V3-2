@@ -1,7 +1,7 @@
 
 
 //get the value of the input element 
-var inputElement = document.getElementById('name').Value;
+var inputElement = document.getElementById('name');
 // create function for the focus state
 function focusOnFirstForm(){
     var inputName = document.getElementById('name').focus();
@@ -185,5 +185,31 @@ console.log(form);
 //submit event
 
 form.addEventListener('submit', (e) => {
-  
-})
+  event.preventDefault();
+
+  var inputNameElementValue = document.getElementById('name').value;
+   let nameCharacter = /^[A-Za-z] + $/;
+   if(inputNameElementValue === 'nameCharacter'){
+    return true
+   }
+  else{
+    alert('please enter name');
+    return false;
+  }
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
