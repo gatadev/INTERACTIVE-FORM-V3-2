@@ -188,8 +188,8 @@ form.addEventListener('submit', (e) => {
   event.preventDefault();
 
   var inputNameElementValue = document.getElementById('name').value;
-   let nameCharacter = /^[A-Za-z] + $/;
-   if(inputNameElementValue === 'nameCharacter'){
+   let nameCharacter = /^[A-Za-z]+$/;
+   if (nameCharacter.test(inputNameElementValue)){
     return true
    }
   else{
