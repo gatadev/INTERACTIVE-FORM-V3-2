@@ -181,35 +181,32 @@ console.log(threeDigitNumber);
 //reference to form
 let form = document.querySelector('form');
 console.log(form);
-
+//check if namefiled is valid
+const nameField = function(){
+  var inputNameElementValue = document.getElementById('name').value;
+  let nameCharacter = /^[A-Za-z]+$/;
+  if(nameCharacter.test('inputNameElementValue')){
+    return true;
+  }
+else  {
+  return false;
+}
+};
 //submit event
 
 form.addEventListener('submit', (e) => {
-  event.preventDefault();
+  e.preventDefault();
 
-  var inputNameElementValue = document.getElementById('name').value;
-   let nameCharacter = /^[A-Za-z]+$/;
-   if (nameCharacter.test(inputNameElementValue)){
-    return true
-   }
-  else{
+  const nameValid = nameField();
+  console.log(nameValid);
+  if(!nameValid){
     alert('please enter name');
-    return false;
   }
+   
+   
+ 
+
 
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
