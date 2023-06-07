@@ -182,31 +182,28 @@ console.log(threeDigitNumber);
 let form = document.querySelector('form');
 console.log(form);
 //check if namefiled is valid
-const nameField = function(){
-  var inputNameElementValue = document.getElementById('name').value;
-  let nameCharacter = /^[A-Za-z]+$/;
-  if(nameCharacter.test('inputNameElementValue')){
-    return true;
+
+!function validate(){
+  var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  var nameInput = document.getElementById('name').value;
+  if(!regName.test(nameInput)){
+      alert('Please enter your full name (first & last name).');
+      document.getElementById('name').focus();
+      return false;
+  }else{
+      alert('Valid name given.');
+      return true;
   }
-else  {
-  return false;
-}
-};
-//submit event
+}();
+
+//addEventListener
+
 
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const nameValid = nameField();
-  console.log(nameValid);
-  if(!nameValid){
-    alert('please enter name');
+  if( validate()){
+    return validate();
+  } else{
+   return  e.preventDefault();
   }
-   
-   
- 
-
-
-
 
 });
