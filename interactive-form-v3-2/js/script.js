@@ -281,3 +281,16 @@ form.addEventListener('submit', (e) => {
 
 //Accessibility
 
+// reference to checkbox
+const checkboxes = document.querySelectorAll(input =[type = 'checkbox']);
+console.log(checkboxes);
+let inputCheckBox = 1;
+let parentBox = document.getElementById('activities-box');
+for(let i=1; i<= checkboxes.length; i++){
+  checkBoxes.addEventListener('focus', (e) =>{
+    parentBox.checked.addClassList('focus');
+  })
+  checkBoxes.addEventListener('blur', (e) => {
+    parentBox.checked.removeClassList('focus');
+  })
+}
