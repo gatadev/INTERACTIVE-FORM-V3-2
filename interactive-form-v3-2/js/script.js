@@ -231,7 +231,7 @@ function is_creditCard()
 
 //date validation
 function monthValidation() {
-  monthValidation = document.getElementById('exp-month').value;
+  let monthValidation = document.getElementById('exp-month').value;
    const expirationDateRegex = /^(0[1-9]|1[0-2])\/(20\d{2}|[3-9]\d)$/;
 
   if (!expirationDateRegex.test(monthValidation)) {
@@ -305,4 +305,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
   }
 });
+
+//Accessibility
 
