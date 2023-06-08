@@ -229,32 +229,7 @@ function is_creditCard()
 
 
 
-//date validation
-function monthValidation() {
-  let monthValidation = document.getElementById('exp-month').value;
-   const expirationDateRegex = /^(0[1-9]|1[0-2])\/(20\d{2}|[3-9]\d)$/;
 
-  if (!expirationDateRegex.test(monthValidation)) {
-    
-    
-    return false;
-  } else {
-    
-    return true;
-  }
-}
-
-//expiration year
-
-function yearExpiration(){
-  let year = document.getElementById('exp-year').value;
-  const expirationYearRegex = /^(20[2-9]\d|30[0-5])$/;
-  if(!expirationYearRegex.test(year)){
-    return false;
-  }else{
-    return false;
-  }
-}
 
 // zip code validation
 
@@ -292,12 +267,8 @@ form.addEventListener('submit', (e) => {
   if(!is_creditCard()){
     e.preventDefault();
   }
-  if(!monthValidation()){
-    e.preventDefault();
-  }
-  if(!yearExpiration()){
-    e.preventDefault();
-  }
+  
+  
   if(!zipCodeValidation()){
     e.preventDefault();
   }
