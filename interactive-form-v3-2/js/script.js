@@ -33,18 +33,20 @@ var secondJobRole = document.getElementById('other-job-role');
 var secondJobRoleValue = document.getElementById('other-job-role').value;
 // creating function to hide other-job-role
 
-var hideOtherJobByDefault = !function(){
+var hideOtherJobByDefault = function(){
   return secondJobRole.style.display='none';
-}();
-
+};
+hideOtherJobByDefault();
 // creating a function to hide color menu by default
 //first let's get select id on color section
 
 var colorMenu = document.getElementById('color');
 console.log(colorMenu);
-var hideColorMenuByDefault = !function(){
+var hideColorMenuByDefault = function(){
   return colorMenu.setAttribute('disabled', true);
-}();
+};
+hideColorMenuByDefault();
+
 //reference to the color section
  var designTheme = document.getElementById('design');//this will grab the design to be manipulate later.
  //console.log(designTheme);
