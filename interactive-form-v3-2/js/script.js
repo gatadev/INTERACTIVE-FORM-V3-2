@@ -166,44 +166,143 @@ paymentOption.addEventListener('change', (e) => {
 
 // input validation
 //email
-let  emailInput = document.querySelector('#email').value;
+let  emailInput = document.querySelector('#email');
 console.log(emailInput);
 //credit card number
-let  creditCardNumber  = document.querySelector('#cc-num').value;
+let  creditCardNumber  = document.querySelector('#cc-num');
 
 console.log(creditCardNumber);
 //zip code
-let  zipCode  = document.querySelector('#zip').value;
+let  zipCode  = document.querySelector('#zip');
 console.log(zipCode);
 //cvv
-let  threeDigitNumber  = document.querySelector('#cvv').value;
+let  threeDigitNumber  = document.querySelector('#cvv');
 console.log(threeDigitNumber);
-//reference to form
-let form = document.querySelector('form');
-console.log(form);
+
+//reference expiration date
+let expirationMonth = document.getElementById("exp-month");
+
+
 //check if namefiled is valid
 
-!function validate(){
-  var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+function validate() {
   var nameInput = document.getElementById('name').value;
-  if(!regName.test(nameInput)){
-      alert('Please enter your full name (first & last name).');
-      document.getElementById('name').focus();
-      return false;
-  }else{
-      alert('Valid name given.');
-      return true;
+  const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  if (!regName.test(nameInput)) {
+    alert('Please enter your full name (first & last name).');
+    document.getElementById('name').focus();
+    return false;
+  } else {
+    alert('Valid name given.');
+    return true;
   }
-}();
+}
+// EMAIL VALIDATION
+function isValidEmail() {
+  emailValidation = document.querySelector('#email').value;
+  const rgexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!rgexEmail.test(emailValidation)) {
+    alert('Please enter a valid email address.');
+    document.getElementById('email').focus();
+    return false;
+  } else {
+    alert('Successful logging into the system.');
+    return true;
+  }
+}
+//CREDIT CARD VALIDATION
+function is_creditCard()
+{
+  let  creditCardNumberValidation  = document.querySelector('#cc-num').value;
+ regexCardValidation = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+  
+        if (!regexCardValidation.test(creditCardNumberValidation))
+          {
+            return true;
+          }
+        else
+          {
+            return false;
+          }
+}
 
-//addEventListener
 
+
+
+//date validation
+function monthValidation() {
+  monthValidation = document.getElementById('exp-month').value;
+   const expirationDateRegex = /^(0[1-9]|1[0-2])\/(20\d{2}|[3-9]\d)$/;
+
+  if (!expirationDateRegex.test(monthValidation)) {
+    
+    
+    return false;
+  } else {
+    
+    return true;
+  }
+}
+
+//expiration year
+
+function yearExpiration(){
+  let year = document.getElementById('exp-year').value;
+  const expirationYearRegex = /^(20[2-9]\d|30[0-5])$/;
+  if(!expirationYearRegex.test(year)){
+    return false;
+  }else{
+    return false;
+  }
+}
+
+// zip code validation
+
+function zipCodeValidation(){
+  let zip = document.getElementById('zip').value;
+  const zipCodePattern = /^\d{5}(?:[-\s]\d{4})?$/;
+  if(!zipCodePattern.test(zip)){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+//three to four digit 
+function is_cvvValidation(){
+  let cvv = document.getElementById('cvv').value;
+  const cvvPattern = /^[0-9]{3}$/;
+  if(!cvvPattern.test(cvv)){
+    return false;
+  }else{
+    return true;
+
+  }
+}
+
+var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
 
 form.addEventListener('submit', (e) => {
-  if( validate()){
-    return validate();
-  } else{
-   return  e.preventDefault();
+  if (!validate()) {
+    e.preventDefault();
   }
-
+  if (!isValidEmail()) {
+    e.preventDefault();
+  }
+  if(!is_creditCard()){
+    e.preventDefault();
+  }
+  if(!monthValidation()){
+    e.preventDefault();
+  }
+  if(!yearExpiration()){
+    e.preventDefault();
+  }
+  if(!zipCodeValidation()){
+    e.preventDefault();
+  }
+  if(!is_cvvValidation()){
+    e.preventDefault();
+  }
 });
+
