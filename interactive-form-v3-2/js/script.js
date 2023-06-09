@@ -37,26 +37,38 @@ var hideOtherJobByDefault = function(){
   return secondJobRole.style.display='none';
 };
 hideOtherJobByDefault();
-// creating a function to hide color menu by default
-//first let's get select id on color section
 
-var colorMenu = document.getElementById('color');
+
+
+
+
+ colorMenu = document.getElementById('color');
 console.log(colorMenu);
 var hideColorMenuByDefault = function(){
   return colorMenu.setAttribute('disabled', true);
 };
 hideColorMenuByDefault();
 
+//let's create function to loop over color menus then clear out the last previous color on the form based on it index
+
+
+//function clearOutPreviousColor(){
+l//et data_theme = document.getElementById('design').value;
+//let lastDataTheme = data_theme[data_theme.length-1];
+//lastDataTheme.style.display='';
+//}
+//clearOutPreviousColor();
 //reference to the color section
  var designTheme = document.getElementById('design');//this will grab the design to be manipulate later.
- //console.log(designTheme);
- //reference to colors
- var color = document.querySelectorAll('color.option[value]');
- console.log(color);
+ var loopOverOptions = document.querySelectorAll('[data-theme]');
+ //function to reset the previous color value to empty 
+ 
+
+ colorMenu.disabled = true;
  //EventListener to designTheme
- designTheme.addEventListener('change', (e)=>{
+ designTheme.addEventListener('change', (e) =>{
    colorMenu.disabled = false;
-   var loopOverOptions = document.querySelectorAll('[data-theme]');
+  
    //console.log('Selected Design: ', designTheme.value);
    loopOverOptions.forEach(option => {
       var loopValue = e.target.value;
@@ -66,20 +78,21 @@ hideColorMenuByDefault();
       if( loopValue === dataTheme){
         option.style.display ='';
         
-          
+        //clearOutPreviousColor();
         
-
+       // option.style.display = clearOutPreviousColor();
       }else{
         option.style.display ='none';
+        colorMenu.disabled = false;
       }
       
    })
   
- })
+});
 
  //Register for activities section
  // reference to legend in fieldset
- let legendActivities = document.querySelector("#activities legend");
+const legendActivities = document.querySelector("#activities legend");
  console.log(legendActivities);
  //total p cost
  let p = document.getElementById("activities-cost");
