@@ -35,6 +35,7 @@ var secondJobRoleValue = document.getElementById('other-job-role').value;
 
 var hideOtherJobByDefault = function(){
   return secondJobRole.style.display='none';
+
 };
 hideOtherJobByDefault();
 
@@ -42,8 +43,12 @@ hideOtherJobByDefault();
 
 
 
- colorMenu = document.getElementById('color');
-console.log(colorMenu);
+ let colorMenu = document.getElementById('color');
+
+ 
+ 
+
+
 var hideColorMenuByDefault = function(){
   return colorMenu.setAttribute('disabled', true);
 };
@@ -51,24 +56,33 @@ hideColorMenuByDefault();
 
 //let's create function to loop over color menus then clear out the last previous color on the form based on it index
 
+var loopOverOptions = document.querySelectorAll('[data-theme]');
+//console.log(loopOverOptions);
 
-//function clearOutPreviousColor(){
-l//et data_theme = document.getElementById('design').value;
-//let lastDataTheme = data_theme[data_theme.length-1];
-//lastDataTheme.style.display='';
-//}
-//clearOutPreviousColor();
+
+
+
+
+
+
+
+
+
 //reference to the color section
  var designTheme = document.getElementById('design');//this will grab the design to be manipulate later.
- var loopOverOptions = document.querySelectorAll('[data-theme]');
- //function to reset the previous color value to empty 
+ //console.log(designTheme);
+let designThemeValue =document.getElementById('design').value;
+console.log(designThemeValue);
+
+
+
  
 
  colorMenu.disabled = true;
  //EventListener to designTheme
  designTheme.addEventListener('change', (e) =>{
    colorMenu.disabled = false;
-  
+   
    //console.log('Selected Design: ', designTheme.value);
    loopOverOptions.forEach(option => {
       var loopValue = e.target.value;
@@ -76,9 +90,15 @@ l//et data_theme = document.getElementById('design').value;
       dataTheme = option.getAttribute('data-theme');
       //console.log('Color Options Theme: ', dataTheme);
       if( loopValue === dataTheme){
-        option.style.display ='';
+       
+          option.style.display= '';
+         loopValue.hidden ='true';
+         
+      
+         
+
         
-        //clearOutPreviousColor();
+        
         
        // option.style.display = clearOutPreviousColor();
       }else{
