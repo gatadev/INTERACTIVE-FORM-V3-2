@@ -57,7 +57,7 @@ hideColorMenuByDefault();
 //let's create function to loop over color menus then clear out the last previous color on the form based on it index
 
 var loopOverOptions = document.querySelectorAll('[data-theme]');
-//console.log(loopOverOptions);
+console.log(loopOverOptions);
 
 
 
@@ -79,12 +79,14 @@ console.log(designThemeValue);
  
 
  colorMenu.disabled = true;
+ 
  //EventListener to designTheme
  designTheme.addEventListener('change', (e) =>{
    colorMenu.disabled = false;
    
    //console.log('Selected Design: ', designTheme.value);
    loopOverOptions.forEach(option => {
+    
       var loopValue = e.target.value;
       console.log('here is the value ', loopValue);
       dataTheme = option.getAttribute('data-theme');
@@ -105,6 +107,12 @@ console.log(designThemeValue);
         option.style.display ='none';
         colorMenu.disabled = false;
       }
+      if(loopValue === 'js puns'){
+        loopOverOptions[0].selected = true;
+      } else {
+        loopOverOptions[4].selected = true;
+      }
+        
       
    })
   
@@ -135,23 +143,35 @@ activity.addEventListener('change', (e) => {
   }
   p.innerHTML =`Total:$${initialCost}`;
 });
-
+let creditCard = document.querySelector('#credit-card');
+let paypal = document.querySelector('#paypal');
 // payment option
 let paymentOption = document.querySelector('#payment');
-
-console.log(paymentOption);
+//get the value of paymv
+var paymentOptionValue = document.querySelector('#payment').value;
 //credit card payment
- let creditCard = document.querySelector('#credit-card');
- console.log(creditCard);
-// paypal payment 
-let paypal = document.querySelector('#paypal');
-console.log(paypal);
+ 
+ 
+window.onload = function(){
+  showCreditCard();
+  hidePaypal();
+  hideBitcoin();
+
+
+}
+
+
 //bitcoin payment
 let bitcoin = document.querySelector('#bitcoin');
 console.log(bitcoin);
+// bitcoin and paypal by default
+
+ //bitcoin.style.display ='none';
 
  function showCreditCard(){
    creditCard.style.display ='block'
+   
+   
 }
 showCreditCard();
 function hideCreditCard(){
@@ -313,17 +333,39 @@ form.addEventListener('submit', (e) => {
 });
 
 //Accessibility
+//create function name hasfoucs()
+//add focus class 
 
 // reference to checkbox
-const checkboxes = document.querySelectorAll(input =[type = 'checkbox']);
+//reference to activity
+
+const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
 console.log(checkboxes);
-let inputCheckBox = 1;
-let parentBox = document.getElementById('activities-box');
-for(let i=1; i<= checkboxes.length; i++){
-  checkBoxes.addEventListener('focus', (e) =>{
-    parentBox.checked.addClassList('focus');
-  })
-  checkBoxes.addEventListener('blur', (e) => {
-    parentBox.checked.removeClassList('focus');
-  })
-}
+
+checkboxes.forEach(element => {
+  const isElementBlur = (document.activeElement !== element);
+  if(element.hasFocus()){
+element.parentNode.classList.add('focus');
+  }
+ if(isElementBlur){
+  element.parentNode.classList.add('blur');
+ }
+
+ 
+});
+//check form validity
+function formValidity(){
+  if(form.checkValidity(e)){
+    e.parentNode.classList.add('valid');
+    e.parentNode.classList.remove('no-valid');
+    parentNode.lastElementChild.setAttribute('style','display: none');
+   
+   } else{
+    if(form.checkValidity(e)){
+      e.parentNode.classList.add('no-valid');
+      e.parentNode.classList.remove('valid');
+      parentNode.lastElementChild.setAttribute('style','display: block');
+
+   }
+   }
+  }
