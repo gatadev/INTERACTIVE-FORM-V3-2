@@ -342,17 +342,22 @@ form.addEventListener('submit', (e) => {
 const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
 console.log(checkboxes);
 
+//create two functions -one with focus and another with blur
+// focus state functionh
 checkboxes.forEach(element => {
-  const isElementBlur = (document.activeElement !== element);
-  if(element.hasFocus()){
-element.parentNode.classList.add('focus');
-  }
- if(isElementBlur){
-  element.parentNode.classList.add('blur');
- }
+  element.addEventListener('focus', function(){
+ element.parentNode.classList.add('focus');
 
- 
+  })
+  element.addEventListener('blur', function(){
+    element.parentNode.classList.add('blur');
+  })
 });
+
+
+
+  
+
 //check form validity
 function formValidity(){
   if(form.checkValidity(e)){
