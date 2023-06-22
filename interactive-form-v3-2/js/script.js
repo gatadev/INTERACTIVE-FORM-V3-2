@@ -203,7 +203,9 @@ hideBitcoin();
 paymentOption.addEventListener('change', (e) => {
   if(e.target.value == 'credit-card'){
     showCreditCard();
-  } else {
+    
+  }
+   else {
     hideCreditCard();
   }
   if(e.target.value =='paypal'){
@@ -217,6 +219,7 @@ paymentOption.addEventListener('change', (e) => {
   }else {
    hideBitcoin();
   }
+  formValidity(e);
 })
 
 // input validation
@@ -313,6 +316,7 @@ function is_cvvValidation(){
 var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
 
 form.addEventListener('submit', (e) => {
+  
   if (!validate(e)) {
     e.preventDefault();
     formValidity();
@@ -350,12 +354,12 @@ console.log(checkboxes);
 //create two functions -one with focus and another with blur
 // focus state functionh
 checkboxes.forEach(element => {
-  element.addEventListener('focus', function(){
+  element.addEventListener('focus', function(e){
  element.parentNode.classList.add('focus');
  
 
   })
-  element.addEventListener('blur', function(){
+  element.addEventListener('blur', function(e){
     element.parentNode.classList.add('blur');
   })
 });
@@ -380,4 +384,3 @@ function formValidity(e){
    
    }
   }
-  formValidity(e);
