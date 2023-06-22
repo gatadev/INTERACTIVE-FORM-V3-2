@@ -313,22 +313,27 @@ function is_cvvValidation(){
 var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
 
 form.addEventListener('submit', (e) => {
-  if (!validate()) {
+  if (!validate(e)) {
     e.preventDefault();
+    formValidity();
   }
-  if (!isValidEmail()) {
+  if (!isValidEmail(e)) {
     e.preventDefault();
+    formValidity();
   }
-  if(!is_creditCard()){
+  if(!is_creditCard(e)){
     e.preventDefault();
+    formValidity();
   }
   
   
-  if(!zipCodeValidation()){
+  if(!zipCodeValidation(e)){
     e.preventDefault();
+    formValidity();
   }
-  if(!is_cvvValidation()){
+  if(!is_cvvValidation(e)){
     e.preventDefault();
+    formValidity();
   }
 });
 
@@ -347,6 +352,7 @@ console.log(checkboxes);
 checkboxes.forEach(element => {
   element.addEventListener('focus', function(){
  element.parentNode.classList.add('focus');
+ 
 
   })
   element.addEventListener('blur', function(){
@@ -359,18 +365,19 @@ checkboxes.forEach(element => {
   
 
 //check form validity
-function formValidity(){
+function formValidity(e){
   if(form.checkValidity(e)){
     e.parentNode.classList.add('valid');
     e.parentNode.classList.remove('no-valid');
-    parentNode.lastElementChild.setAttribute('style','display: none');
+    e.parentNode.lastElementChild.setAttribute('style','display: none');
    
    } else{
-    if(form.checkValidity(e)){
+    
       e.parentNode.classList.add('no-valid');
       e.parentNode.classList.remove('valid');
-      parentNode.lastElementChild.setAttribute('style','display: block');
+      e.parentNode.lastElementChild.setAttribute('style','display: block');
 
-   }
+   
    }
   }
+  formValidity(e);
