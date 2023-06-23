@@ -219,7 +219,6 @@ paymentOption.addEventListener('change', (e) => {
   }else {
    hideBitcoin();
   }
-  formValidity(e);
 })
 
 // input validation
@@ -257,7 +256,7 @@ function validate() {
 }
 // EMAIL VALIDATION
 function isValidEmail() {
-  emailValidation = document.querySelector('#email').value;
+  let emailValidation = document.querySelector('#email').value;
   const rgexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!rgexEmail.test(emailValidation)) {
     alert('Please enter a valid email address.');
@@ -316,28 +315,36 @@ function is_cvvValidation(){
 var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
 
 form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let target = e.target;
+  if (!validate(inputElement)) {
+
+   target.parentNode.classList.add('valid');
+   console.log(target.parentNode);
+   target.parentNode.classList.remove('no-valid');
+    target.parentNode.lastElementChild.setAttribute('style','display: none');
+    
+    
+   
+   
+  }
+  if (!isValidEmail()) {
+    e.preventDefault();
+    
+  }
+  if(!is_creditCard()){
+    e.preventDefault();
+    
+  }
   
-  if (!validate(e)) {
-    e.preventDefault();
-    formValidity();
-  }
-  if (!isValidEmail(e)) {
-    e.preventDefault();
-    formValidity();
-  }
-  if(!is_creditCard(e)){
-    e.preventDefault();
-    formValidity();
-  }
   
-  
-  if(!zipCodeValidation(e)){
+  if(!zipCodeValidation()){
     e.preventDefault();
-    formValidity();
+   
   }
-  if(!is_cvvValidation(e)){
+  if(!is_cvvValidation()){
     e.preventDefault();
-    formValidity();
+   
   }
 });
 
@@ -354,12 +361,12 @@ console.log(checkboxes);
 //create two functions -one with focus and another with blur
 // focus state functionh
 checkboxes.forEach(element => {
-  element.addEventListener('focus', function(e){
+  element.addEventListener('focus', function(){
  element.parentNode.classList.add('focus');
  
 
   })
-  element.addEventListener('blur', function(e){
+  element.addEventListener('blur', function(){
     element.parentNode.classList.add('blur');
   })
 });
@@ -369,11 +376,11 @@ checkboxes.forEach(element => {
   
 
 //check form validity
-function formValidity(e){
-  if(form.checkValidity(e)){
-    e.parentNode.classList.add('valid');
-    e.parentNode.classList.remove('no-valid');
-    e.parentNode.lastElementChild.setAttribute('style','display: none');
+/***function formValidity(){
+  if(form.checkValidity()){
+    element.parentNode.classList.add('valid');
+    element.parentNode.classList.remove('no-valid');
+    element.parentNode.lastElementChild.setAttribute('style','display: none');
    
    } else{
     
@@ -383,4 +390,4 @@ function formValidity(e){
 
    
    }
-  }
+  }***/
