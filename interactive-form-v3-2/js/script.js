@@ -317,35 +317,45 @@ var form = document.querySelector('form'); // Replace 'yourForm' with the actual
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let target = e.target;
-  if (!validate(inputElement)) {
+  function addStyles(nameInput, validate){
+  if(!valid){
+    nameInput.parentNode.classList.add('no-valid');
+    nameInput.parentNode.classList.remove('valid');
+        } else{
+          nameInput.parentNode.classList.add('valid');
+          this.parentNode.classList.remove('no-valid');
+        }
 
-   target.parentNode.classList.add('valid');
-   console.log(target.parentNode);
-   target.parentNode.classList.remove('no-valid');
-    target.parentNode.lastElementChild.setAttribute('style','display: none');
-    
-    
-   
-   
-  }
-  if (!isValidEmail()) {
+        
+      }
+
+        function addEmailStyles(emailValidation, isValidEmail){
+          if (!isValidEmail) {
+            //e.preventDefault();
+            emailValidation.parentNode.classList.add('no-valid');
+            emailValidation.parentNode.classList.remove('valid');
+          } else{
+            emailValidation.parentNode.classList.add('valid');
+            emailValidation.parentNode.classList.remove('valid');
+          }
+        
+        }
+  function addPaymentStyles(creditCardNumberValidation, is_creditCard){
+    if(!is_creditCard){
     e.preventDefault();
+    creditCardNumberValidation.parentNode.add('no-valid');
+    creditCardNumberValidation.parentNode.remove('valid')
     
-  }
-  if(!is_creditCard()){
-    e.preventDefault();
-    
-  }
+    } else{
+      creditCardNumberValidation.parentNode.add('valid');
+      creditCardNumberValidation.parentNode.remove('no-valid');
+    }
   
+}
+
+
   
-  if(!zipCodeValidation()){
-    e.preventDefault();
-   
-  }
-  if(!is_cvvValidation()){
-    e.preventDefault();
-   
-  }
+
 });
 
 //Accessibility
@@ -375,19 +385,4 @@ checkboxes.forEach(element => {
 
   
 
-//check form validity
-/***function formValidity(){
-  if(form.checkValidity()){
-    element.parentNode.classList.add('valid');
-    element.parentNode.classList.remove('no-valid');
-    element.parentNode.lastElementChild.setAttribute('style','display: none');
-   
-   } else{
-    
-      e.parentNode.classList.add('no-valid');
-      e.parentNode.classList.remove('valid');
-      e.parentNode.lastElementChild.setAttribute('style','display: block');
 
-   
-   }
-  }***/
