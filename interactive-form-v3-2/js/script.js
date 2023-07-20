@@ -7,9 +7,10 @@ function focusOnFirstForm(){
     var inputName = document.getElementById('name').focus();
 
 }
+focusOnFirstForm();
 //When page load  passing the fucntionon document load 
 window.onload = function (){
-  return  focusOnFirstForm();
+  return  focusOnFirstForm()
 
 }
 //This will select the Select element in option section
@@ -145,81 +146,40 @@ activity.addEventListener('change', (e) => {
 });
 let creditCard = document.querySelector('#credit-card');
 let paypal = document.querySelector('#paypal');
-// payment option
-let paymentOption = document.querySelector('#payment');
-//get the value of paymv
-var paymentOptionValue = document.querySelector('#payment').value;
-//credit card payment
- 
- 
-window.onload = function(){
-  showCreditCard();
-  hidePaypal();
-  hideBitcoin();
-
-
-}
-
-
-//bitcoin payment
 let bitcoin = document.querySelector('#bitcoin');
-console.log(bitcoin);
-// bitcoin and paypal by default
+let paymentMethod = document.getElementById('#payment');
+window.onload = function() {
+  
+  paypal.style.display='none';
+bitcoin.style.display='none';
 
- //bitcoin.style.display ='none';
-
- function showCreditCard(){
-   creditCard.style.display ='block'
-   
-   
-}
-showCreditCard();
-function hideCreditCard(){
-   creditCard.style.display ='none';
-}
-hideCreditCard();
-
-function showPaypal(){
-  paypal.style.display = 'block'
-}
-showPaypal();
-
-function hidePaypal(){
-  paypal.style.display ='none';
-}
-hidePaypal();
-
-function showBitcoin(){
-  bitcoin.style.display ='block';
-}
-showBitcoin();
-function hideBitcoin(){
-  bitcoin.style.display ='none';
-}
-hideBitcoin();
+  
+};
 
 
-//addEventListener on payment method
-paymentOption.addEventListener('change', (e) => {
-  if(e.target.value == 'credit-card'){
-    showCreditCard();
-    
+
+// function to handle apyment method
+function handlePaymentMethod(event){
+  let  paymentSelected= event.target.value;
+  //display and hide other payment based on user's input
+  if(paymentSelected=== 'creditCard'){
+    creditCard.style.display='block';
+    paypal.style.display='none';
+    bitcoin.style.display='none';
+  }else if(paymentSelected=== 'paypal'){
+    paypal.style.display = 'block';
+    creditCard.style.display = 'none';
+    bitcoin.style.display = 'none';
+  } else if(paymentSelected === 'bitcoin'){
+    bitcoin.style.display = 'block';
+    creditCard.style.display = 'none';
+    paypal.style.display = 'none';
   }
-   else {
-    hideCreditCard();
-  }
-  if(e.target.value =='paypal'){
-   showPaypal();
-  } else {
-    hidePaypal();
-  }
-  if(e.target.value == 'bitcoin'){
-  showBitcoin();
+}
 
-  }else {
-   hideBitcoin();
-  }
-})
+
+
+ 
 
 // input validation
 //email
@@ -244,7 +204,7 @@ let expirationMonth = document.getElementById("exp-month");
 
 function validate() {
   var nameInput = document.getElementById('name').value;
-  const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  const regName = /^[A-Za-z\s]+$/;
   if (!regName.test(nameInput)) {
     alert('Please enter your full name (first & last name).');
     document.getElementById('name').focus();
@@ -271,7 +231,7 @@ function isValidEmail() {
 function is_creditCard()
 {
   let  creditCardNumberValidation  = document.querySelector('#cc-num').value;
- regexCardValidation = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+ regexCardValidation = /^\d{16}$/;
   
         if (!regexCardValidation.test(creditCardNumberValidation))
           {
@@ -292,7 +252,7 @@ function is_creditCard()
 
 function zipCodeValidation(){
   let zip = document.getElementById('zip').value;
-  const zipCodePattern = /^\d{5}(?:[-\s]\d{4})?$/;
+  const zipCodePattern = /^\d{5}$/;
   if(!zipCodePattern.test(zip)){
     return false;
   }else{
@@ -303,7 +263,7 @@ function zipCodeValidation(){
 //three to four digit 
 function is_cvvValidation(){
   let cvv = document.getElementById('cvv').value;
-  const cvvPattern = /^[0-9]{3}$/;
+  const cvvPattern = /^\d{3}$/;
   if(!cvvPattern.test(cvv)){
     return false;
   }else{
@@ -319,44 +279,52 @@ form.addEventListener('submit', (e) => {
   let target = e.target;
   function addStyles(nameInput, validate){
   if(!valid){
-    nameInput.parentNode.classList.add('no-valid');
-    nameInput.parentNode.classList.remove('valid');
+    nameInput.parentElement.classList.add('no-valid');
+    nameInput.parentElement.classList.remove('valid');
         } else{
-          nameInput.parentNode.classList.add('valid');
-          this.parentNode.classList.remove('no-valid');
+          nameInput.parentElement.classList.add('valid');
+          this.parentElement.classList.remove('no-valid');
         }
 
-        
+        addStyles(nameInput, validate)
       }
 
         function addEmailStyles(emailValidation, isValidEmail){
           if (!isValidEmail) {
             //e.preventDefault();
-            emailValidation.parentNode.classList.add('no-valid');
-            emailValidation.parentNode.classList.remove('valid');
+            emailValidation.parentElement.classList.add('no-valid');
+            emailValidation.parentElement.classList.remove('valid');
           } else{
-            emailValidation.parentNode.classList.add('valid');
-            emailValidation.parentNode.classList.remove('valid');
+            emailValidation.parentElement.classList.add('valid');
+            emailValidation.parentElement.classList.remove('valid');
           }
-        
+          addEmailStyles(emailValidation, isValidEmail)
         }
   function addPaymentStyles(creditCardNumberValidation, is_creditCard){
     if(!is_creditCard){
     e.preventDefault();
-    creditCardNumberValidation.parentNode.add('no-valid');
-    creditCardNumberValidation.parentNode.remove('valid')
+    creditCardNumberValidation.parentElement.add('no-valid');
+    creditCardNumberValidation.parentElement.remove('valid')
     
     } else{
-      creditCardNumberValidation.parentNode.add('valid');
-      creditCardNumberValidation.parentNode.remove('no-valid');
+      creditCardNumberValidation.parentElement.add('valid');
+      creditCardNumberValidation.parentElement.remove('no-valid');
     }
-  
+    addPaymentStyles(creditCardNumberValidation, is_creditCard)
 }
 
+if(form.checkValidity()){
+  form.submit();
+}
+  
+
+}); 
 
   
 
-});
+
+
+
 
 //Accessibility
 //create function name hasfoucs()
