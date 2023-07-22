@@ -144,17 +144,28 @@ activity.addEventListener('change', (e) => {
   }
   p.innerHTML =`Total:$${initialCost}`;
 });
-let creditCard = document.querySelector('#credit-card');
-let paypal = document.querySelector('#paypal');
-let bitcoin = document.querySelector('#bitcoin');
-let paymentMethod = document.getElementById('#payment');
+let creditCard = document.getElementById('credit-card');
+let paypal = document.getElementById('paypal');
+let bitcoin = document.getElementById('bitcoin');
+let paymentMethod = document.getElementById('payment');
+//when windows load display the payment method to credit-card
 window.onload = function() {
   
-  paypal.style.display='none';
-bitcoin.style.display='none';
+  let paymentDisplayMethod = document.querySelector("#payment option[value= 'select method']");
 
+  paymentDisplayMethod.innerHTML= 'Credit Card';
   
 };
+//when windows load display the payment method to credit-card
+
+
+
+  
+  
+ 
+  
+ 
+
 
 
 
@@ -162,7 +173,7 @@ bitcoin.style.display='none';
 function handlePaymentMethod(event){
   let  paymentSelected= event.target.value;
   //display and hide other payment based on user's input
-  if(paymentSelected=== 'creditCard'){
+  if(paymentSelected=== 'credit-card'){
     creditCard.style.display='block';
     paypal.style.display='none';
     bitcoin.style.display='none';
@@ -175,9 +186,9 @@ function handlePaymentMethod(event){
     creditCard.style.display = 'none';
     paypal.style.display = 'none';
   }
+ 
 }
-
-
+document.addEventListener('change', handlePaymentMethod);
 
  
 
@@ -349,8 +360,5 @@ checkboxes.forEach(element => {
   })
 });
 
-
-
-  
 
 
