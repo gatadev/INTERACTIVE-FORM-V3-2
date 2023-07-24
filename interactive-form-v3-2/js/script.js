@@ -8,7 +8,7 @@ function focusOnFirstForm(){
 
 }
 focusOnFirstForm();
-//When page load  passing the fucntionon document load 
+//When page load  passing the function document load 
 window.onload = function (){
   return  focusOnFirstForm()
 
