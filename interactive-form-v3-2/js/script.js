@@ -8,7 +8,7 @@ function focusOnFirstForm(){
 
 }
 focusOnFirstForm();
-//When page load  passing the function document load 
+//When page load  passing the fucntionon document load 
 window.onload = function (){
   return  focusOnFirstForm()
 
@@ -146,14 +146,24 @@ activity.addEventListener('change', (e) => {
 });
 let creditCard = document.getElementById('credit-card');
 let paypal = document.getElementById('paypal');
+
 let bitcoin = document.getElementById('bitcoin');
+
 let paymentMethod = document.getElementById('payment');
 //when windows load display the payment method to credit-card
+
+console.log(bitcoinP);
 window.onload = function() {
   
-  let paymentDisplayMethod = document.querySelector("#payment option[value= 'select method']");
+  paypal.setAttribute('hidden', true);
+  
+bitcoin.setAttribute('hidden', true);
+  
+  let paymentDisplayMethod = document.querySelector("#payment option[value= 'select method']").innerHTML='Credit Card';
+  
+  
 
-  paymentDisplayMethod.innerHTML= 'Credit Card';
+  //paymentDisplayMethod.innerHTML= 'Credit Card';
   
 };
 //when windows load display the payment method to credit-card
