@@ -1,353 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register for Full Stack Conference</title>
+	<link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+</head>
+<body>
+  <header>
+    <div id="header-container" class="header-container">
+      <span>Register for</span>
+      <h1>Full Stack Conference</h1>
+    </div>
+  </header>
+	<div class="container">
 
+    <form action="index.html" method="post" novalidate>
+      <p id="form-hint" class="form-hint"><span class="asterisk">*</span> - required field</p>
 
-//get the value of the input element 
-var inputElement = document.getElementById('name');
-// create function for the focus state
-function focusOnFirstForm(){
-    var inputName = document.getElementById('name').focus();
-
-}
-focusOnFirstForm();
-//When page load  passing the fucntionon document load 
-window.onload = function (){
-  return  focusOnFirstForm()
-
-}
-//This will select the Select element in option section
-var jobRole = document.getElementById("title");
-
-//add an eventListener to jobRole then show other job role
-jobRole.addEventListener("change", (e) => {
-    //var jobRoleValue = e.target.value;
-    var otherJobRole = document.querySelector("#title option[value='other']");
-    if(otherJobRole.selected===true){
-       return secondJobRole.style.display="block";
-    } else{
-        return secondJobRole.style.display="none";
-    }
-
-});
-
-
-/***Select the other job role so we can hide***/
-var secondJobRole = document.getElementById('other-job-role');
-var secondJobRoleValue = document.getElementById('other-job-role').value;
-// creating function to hide other-job-role
-
-var hideOtherJobByDefault = function(){
-  return secondJobRole.style.display='none';
-
-};
-hideOtherJobByDefault();
-
-
-
-
-
- let colorMenu = document.getElementById('color');
-
- 
- 
-
-
-var hideColorMenuByDefault = function(){
-  return colorMenu.setAttribute('disabled', true);
-};
-hideColorMenuByDefault();
-
-//let's create function to loop over color menus then clear out the last previous color on the form based on it index
-
-var loopOverOptions = document.querySelectorAll('[data-theme]');
-console.log(loopOverOptions);
-
-
-
-
-
-
-
-
-
-
-//reference to the color section
- var designTheme = document.getElementById('design');//this will grab the design to be manipulate later.
- //console.log(designTheme);
-let designThemeValue =document.getElementById('design').value;
-console.log(designThemeValue);
-
-
-
- 
-
- colorMenu.disabled = true;
- 
- //EventListener to designTheme
- designTheme.addEventListener('change', (e) =>{
-   colorMenu.disabled = false;
-   
-   //console.log('Selected Design: ', designTheme.value);
-   loopOverOptions.forEach(option => {
-    
-      var loopValue = e.target.value;
-      console.log('here is the value ', loopValue);
-      dataTheme = option.getAttribute('data-theme');
-      //console.log('Color Options Theme: ', dataTheme);
-      if( loopValue === dataTheme){
-       
-          option.style.display= '';
-         loopValue.hidden ='true';
-         
-      
-         
-
+      <div class="basic-info-and-shirt-box">       
+        <fieldset class="basic-info">         
+          <legend>Basic Info</legend>
+          
+          <label for="name">Name: <span class="asterisk">*</span>
+            <input type="text" id="name" name="user-name" class="error-border">
+            <span id="name-hint" class="name-hint hint">Name field cannot be blank</span>
+          </label>
+          
+          
+          <label for="email">Email Address: <span class="asterisk">*</span>
+            <input type="email" id="email" name="user-email" class="error-border">
+            <span id="email-hint" class="email-hint hint">Email address must be formatted correctly</span>
+          </label>
+          
+          
+          <label for="title">Job Role</label>
+          <select id="title" name="user-title">
+            <option hidden>Select Job Role</option>
+            <option value="full-stack js developer">Full Stack JavaScript Developer</option>
+            <option value="front-end developer">Front End Developer</option>
+            <option value="back-end developer">Back End Developer</option>
+            <option value="designer">Designer</option>          
+            <option value="student">Student</option>
+            <option value="other">Other</option>  
+          </select> 
+          
+          <input type="text" name="other-job-role" id="other-job-role" class="other-job-role" placeholder="Other job role?">
+        </fieldset>
         
+        <fieldset class="shirts">
+          <legend>T-Shirt Info</legend>
+          <div class="shirt-div-box">
+            <div id="shirt-sizes" class="shirt-sizes">
+              <label for="size">Size:</label>
+              <select id="size" name="user-size">
+                <option value="small">S</option>
+                <option value="medium" selected>M</option>
+                <option value="large">L</option>
+                <option value="extra large">XL</option>
+                <option value="extra large">XXL</option>
+              </select>
+            </div>
+
+            <div id="shirt-designs" class="shirt-designs">
+              <label for="design">Design:</label>
+              <select id="design" name="user-design">
+                <option hidden>Select Theme</option>
+                <option value="js puns">Theme - JS Puns</option>
+                <option value="heart js">Theme - I &#9829; JS</option>
+              </select>
+            </div>
+
+            <div id="shirt-colors" class="shirt-colors">
+              <label for="color">Color:</label>
+              <select id="color">
+                <option selected hidden>Select a design theme above</option>
+                <option data-theme="js puns" value="cornflowerblue">Cornflower Blue (JS Puns shirt only)</option>
+                <option data-theme="js puns" value="darkslategrey">Dark Slate Grey (JS Puns shirt only)</option> 
+                <option data-theme="js puns" value="gold">Gold (JS Puns shirt only)</option>
+                <option data-theme="heart js" value="tomato">Tomato (I &#9829; JS shirt only)</option>
+                <option data-theme="heart js" value="steelblue">Steel Blue (I &#9829; JS shirt only)</option> 
+                <option data-theme="heart js" value="dimgrey">Dim Grey (I &#9829; JS shirt only)</option> 
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      </div>               
+
+      <fieldset id="activities" class="activities">
+        <legend>Register for Activities <span class="asterisk">*</span></legend>
+        <div id="activities-box" class="activities-box error-border">
+          <label>
+            <input type="checkbox" name="all" data-cost="200">
+            <span>Main Conference</span>
+            <span class="activity-cost">$200</span>
+            <img class="activity-img js-img" src="img/js.svg" alt=""> 
+          </label>
+          <label>
+            <input type="checkbox" name="js-libs" data-day-and-time="Tuesday 9am-12pm" data-cost="100"> 
+            <span>JavaScript Libraries Workshop</span>
+            <span>Tuesday 9am-12pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img react-img" src="img/react.svg" alt=""> 
+          </label>
+          <label>
+            <input type="checkbox" name="node" data-day-and-time="Tuesday 1pm-4pm" data-cost="100"> 
+            <span>Node.js Workshop</span>
+            <span>Tuesday 1pm-4pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img node-img" src="img/node.svg" alt=""> 
+          </label> 
+          <label>
+            <input type="checkbox" name="js-frameworks" data-day-and-time="Tuesday 9am-12pm" data-cost="100"> 
+            <span>JavaScript Frameworks Workshop</span>
+            <span>Tuesday 9am-12pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img angular-img" src="img/angular.svg" alt=""> 
+          </label>
+          <label>
+            <input type="checkbox" name="build-tools" data-day-and-time="Tuesday 1pm-4pm" data-cost="100"> 
+            <span>Build tools Workshop</span>
+            <span>Tuesday 1pm-4pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img build-img" src="img/build.svg" alt=""> 
+          </label>
+          <label>
+            <input type="checkbox" name="npm" data-day-and-time="Wednesday 9am-12pm" data-cost="100"> 
+            <span>npm Workshop</span>
+            <span>Wednesday 9am-12pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img npm-img" src="img/npm.svg" alt=""> 
+          </label>         
+          <label>
+            <input type="checkbox" name="express" data-day-and-time="Wednesday 1pm-4pm" data-cost="100"> 
+            <span>Express Workshop</span>
+            <span>Wednesday 1pm-4pm</span> 
+            <span class="activity-cost">$100</span>
+            <img class="activity-img express-img" src="img/express.svg" alt=""> 
+          </label>
+        </div>
+        <p id="activities-cost" class="activities-cost">Total: $0</p>
+        <p id="activities-hint" class="activities-hint hint">Choose at least one activity</p>        	
+      </fieldset>
+
+      <fieldset class="payment-methods">
+        <legend>Payment Info</legend>
+
+        <div class="payment-method-box">
+          <label for="payment">I'm going to pay with:</label>
+          <select id="payment" name="user-payment">
+            <option value="select method" hidden>Select Payment Method</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="bitcoin">Bitcoin</option>
+          </select>
+        </div>
+
+        <div id="credit-card" class="credit-card">
+          <div class="expiration-box">
+            <div class="month-box">
+              <label for="exp-month">Expiration Date:</label>
+              <select id="exp-month" name="user-exp-month" class="error-border">
+                <option hidden>Select Date</option>
+                <option value="1">01 - January</option>
+                <option value="2">02 - February</option>
+                <option value="3">03 - March</option>
+                <option value="4">04 - April</option>
+                <option value="5">05 - May</option>
+                <option value="6">06 - June</option>
+                <option value="7">07 - July</option>
+                <option value="8">08 - August</option>
+                <option value="9">09 - September</option>
+                <option value="10">10 - October</option>
+                <option value="11">11 - November</option>	
+                <option value="12">12 - December</option>          		          
+              </select>
+            </div>
+
+            <div class="year-box">
+              <label for="exp-year">Expiration Year:</label>
+              <select id="exp-year" name="user-exp-year" class="error-border">
+                <option hidden>Select Year</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>    		          
+              </select> 
+            </div>
+          </div> 
+
+          <div class="credit-card-box">
+            <div class="num-box">
+              <label for="cc-num">Card Number: <span class="asterisk">*</span>
+                <input id="cc-num" name="user-cc-num" type="text" class="error-border">
+                <span id="cc-hint" class="cc-hint hint">Credit card number must be between 13 - 16 digits</span>
+              </label>
+            </div>
+
+            <div class="zip-box">
+              <label for="zip">Zip Code: <span class="asterisk">*</span>
+                <input id="zip" name="user-zip" type="text" class="error-border">
+                <span id="zip-hint" class="zip-hint hint">Zip Code must be 5 digits</span>
+              </label>
+            </div>
+
+            <div class="cvv-box">
+              <label for="cvv">CVV: <span class="asterisk">*</span>
+                <input id="cvv" name="user-cvv" type="text" class="error-border">
+                <span id="cvv-hint" class="cvv-hint hint">CVV must be 3 digits</span>
+              </label>
+            </div>
+          </div>           	         
+        </div>
+
+        <div id="paypal" class="paypal">
+          <h3>PayPal</h3>
+        	<p>If you selected the PayPal option we'll take you to Paypal's site to set up your billing information, when you click “Register” below.</p>
+        </div> 
+
+        <div id="bitcoin" class="bitcoin">
+          <h3>Bitcoin</h3>
+        	<p>If you selected the Bitcoin option we'll take you to the Coinbase site to set up your billing information. Due to the nature of exchanging Bitcoin, all Bitcoin transactions will be final.</p>
+        </div>                  
+      </fieldset>        
         
-        
-       // option.style.display = clearOutPreviousColor();
-      }else{
-        option.style.display ='none';
-        colorMenu.disabled = false;
-      }
-      if(loopValue === 'js puns'){
-        loopOverOptions[0].selected = true;
-      } else {
-        loopOverOptions[4].selected = true;
-      }
-        
-      
-   })
-  
-});
-
- //Register for activities section
- // reference to legend in fieldset
-const legendActivities = document.querySelector("#activities legend");
- console.log(legendActivities);
- //total p cost
- let p = document.getElementById("activities-cost");
- console.log(p);
- // total cost of activity
-let initialCost = 0;
-let activity = document.getElementById('activities');
-//event handler on change 
-activity.addEventListener('change', (e) => {
-  
-  
-  let currentElementAffected = parseInt(e.target.getAttribute(["data-cost"]))
-  console.log(currentElementAffected);
-  //condition to check and check 
-  if (e.target.checked == true){
-    initialCost += currentElementAffected;
-  } else if (e.target.checked == false){
-
-    initialCost -= currentElementAffected;
-  }
-  p.innerHTML =`Total:$${initialCost}`;
-});
-let creditCard = document.getElementById('credit-card');
-let paypal = document.getElementById('paypal');
-let bitcoin = document.getElementById('bitcoin');
-let paymentMethod = document.getElementById('payment');
-window.onload = function() {
-  
-  paypal.style.display='none';
-bitcoin.style.display='none';
-
-  
-};
-
-
-
-// function to handle apyment method
-function handlePaymentMethod(event){
-  let  paymentSelected= event.target.value;
-  //display and hide other payment based on user's input
-  if(paymentSelected=== 'creditCard'){
-    creditCard.style.display='block';
-    paypal.style.display='none';
-    bitcoin.style.display='none';
-  }else if(paymentSelected=== 'paypal'){
-    paypal.style.display = 'block';
-    creditCard.style.display = 'none';
-    bitcoin.style.display = 'none';
-  } else if(paymentSelected === 'bitcoin'){
-    bitcoin.style.display = 'block';
-    creditCard.style.display = 'none';
-    paypal.style.display = 'none';
-  }
+      <button type="submit">Register</button>      
+    </form>
+  </div>
+  <script src="js/script.js">
  
-}
-document.addEventListener('change', handlePaymentMethod);
-
- 
-
-// input validation
-//email
-let  emailInput = document.querySelector('#email');
-console.log(emailInput);
-//credit card number
-let  creditCardNumber  = document.querySelector('#cc-num');
-
-console.log(creditCardNumber);
-//zip code
-let  zipCode  = document.querySelector('#zip');
-console.log(zipCode);
-//cvv
-let  threeDigitNumber  = document.querySelector('#cvv');
-console.log(threeDigitNumber);
-
-//reference expiration date
-let expirationMonth = document.getElementById("exp-month");
-
-
-//check if namefiled is valid
-
-function validate() {
-  var nameInput = document.getElementById('name').value;
-  const regName = /^[A-Za-z\s]+$/;
-  if (!regName.test(nameInput)) {
-    alert('Please enter your full name (first & last name).');
-    document.getElementById('name').focus();
-    return false;
-  } else {
-    alert('Valid name given.');
-    return true;
-  }
-}
-// EMAIL VALIDATION
-function isValidEmail() {
-  let emailValidation = document.querySelector('#email').value;
-  const rgexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!rgexEmail.test(emailValidation)) {
-    alert('Please enter a valid email address.');
-    document.getElementById('email').focus();
-    return false;
-  } else {
-    alert('Successful logging into the system.');
-    return true;
-  }
-}
-//CREDIT CARD VALIDATION
-function is_creditCard()
-{
-  let  creditCardNumberValidation  = document.querySelector('#cc-num').value;
- regexCardValidation = /^\d{16}$/;
+  </script>
   
-        if (!regexCardValidation.test(creditCardNumberValidation))
-          {
-            return true;
-          }
-        else
-          {
-            return false;
-          }
-}
-
-
-
-
-
-
-// zip code validation
-
-function zipCodeValidation(){
-  let zip = document.getElementById('zip').value;
-  const zipCodePattern = /^\d{5}$/;
-  if(!zipCodePattern.test(zip)){
-    return false;
-  }else{
-    return true;
-  }
-}
-
-//three to four digit 
-function is_cvvValidation(){
-  let cvv = document.getElementById('cvv').value;
-  const cvvPattern = /^\d{3}$/;
-  if(!cvvPattern.test(cvv)){
-    return false;
-  }else{
-    return true;
-
-  }
-}
-
-var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let target = e.target;
-  function addStyles(nameInput, validate){
-  if(!valid){
-    nameInput.parentElement.classList.add('no-valid');
-    nameInput.parentElement.classList.remove('valid');
-        } else{
-          nameInput.parentElement.classList.add('valid');
-          this.parentElement.classList.remove('no-valid');
-        }
-
-        addStyles(nameInput, validate)
-      }
-
-        function addEmailStyles(emailValidation, isValidEmail){
-          if (!isValidEmail) {
-            //e.preventDefault();
-            emailValidation.parentElement.classList.add('no-valid');
-            emailValidation.parentElement.classList.remove('valid');
-          } else{
-            emailValidation.parentElement.classList.add('valid');
-            emailValidation.parentElement.classList.remove('valid');
-          }
-          addEmailStyles(emailValidation, isValidEmail)
-        }
-  function addPaymentStyles(creditCardNumberValidation, is_creditCard){
-    if(!is_creditCard){
-    e.preventDefault();
-    creditCardNumberValidation.parentElement.add('no-valid');
-    creditCardNumberValidation.parentElement.remove('valid')
-    
-    } else{
-      creditCardNumberValidation.parentElement.add('valid');
-      creditCardNumberValidation.parentElement.remove('no-valid');
-    }
-    addPaymentStyles(creditCardNumberValidation, is_creditCard)
-}
-
-if(form.checkValidity()){
-  form.submit();
-}
   
-
-}); 
-
-  
-
-
-
-
-
-//Accessibility
-//create function name hasfoucs()
-//add focus class 
-
-// reference to checkbox
-//reference to activity
-
-const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
-console.log(checkboxes);
-
-//create two functions -one with focus and another with blur
-// focus state functionh
-checkboxes.forEach(element => {
-  element.addEventListener('focus', function(){
- element.parentNode.classList.add('focus');
- 
-
-  })
-  element.addEventListener('blur', function(){
-    element.parentNode.classList.add('blur');
-  })
-});
-
-
-
+</body>
+</html>
