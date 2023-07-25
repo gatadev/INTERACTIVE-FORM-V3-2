@@ -187,6 +187,7 @@ function handlePaymentMethod(event){
     creditCard.style.display='block';
     paypal.style.display='none';
     bitcoin.style.display='none';
+ 
   }else if(paymentSelected=== 'paypal'){
     paypal.style.display = 'block';
     creditCard.style.display = 'none';
@@ -203,6 +204,8 @@ document.addEventListener('change', handlePaymentMethod);
  document.querySelector('form').addEventListener('submit', function(event){
 //prevent default from form submission
 event.preventDefault();
+// target the event
+let eventTarget= event.target;
 //value of the name input
 var inputNameValue = document.getElementById("name").value;
 
@@ -215,8 +218,15 @@ console.log("Name Field Value:", inputNameValue);
     if(!isNameValid){
       //inputfield not valid prevent from submitting
       event.preventDefault();
+      eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
+      eventTarget.parentElement.lastElementChild.style.display='block';
+
     } else {
       console.log('form sumitted successfully');
+      eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
+      eventTarget.parentElement.lastElementChild.style.display='none';
     }
 //value of the email input
 var inputEmailValue = document.getElementById('email').value;
@@ -228,12 +238,18 @@ console.log('is email field valid :' ,  isEmailValid );
 //check email field is valid
 if(!isEmailValid){
   event.preventDefault();
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.lastElementChild.style.display='block';
 } else {
   console.log('successful submitted');
+  eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
+      eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
 // const credit card
-const  creditCardValue = document.getElementById('credit-card').value;
+const  creditCardValue = document.getElementById('cc-num').value;
 const cardRegex =/^\d{13,16}$/;
 
 
@@ -248,15 +264,74 @@ console.log('is card field valid :', isCardValid );
 //check field valid
 if(!isCardValid){
   event.preventDefault();
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.lastElementChild.style.display='block';
+
 } else {
   console.log(' form successful submitted');
+  eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
+      eventTarget.parentElement.lastElementChild.style.display='none';
+
 }
+// zip
+const zipValue= document.getElementById('zip').value;
+const zipRegex = /^\d{5}$/;
+const isZip= zipRegex.test(zipValue);
+console.log('zip field value : ', zipValue );
+console.log('is zip field valid :', isZip );
+//check validity of zip
+if(!isZip){
+  event.preventDefault();
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.lastElementChild.style.display='block';
+} else{
+  console.log('form submiited suucessfully');
+  eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
+      eventTarget.parentElement.lastElementChild.style.display='none';
+
+
+}
+//cvv number
+const cvvValue = document.getElementById('cvv').value;
+const cvvRegex= /^[0-9]{3,4}$/;
+const isCvv= cvvRegex.test(cvvValue);
+console.log('cvv field value : ', cvvValue );
+console.log('is zip field valid :', isCvv );
+if(!isCvv){
+  event.preventDefault();
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.lastElementChild.style.display='block';
+
+} else {
+  console.log('form successfully submitted');
+  eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
+      eventTarget.parentElement.lastElementChild.style.display='none';
+
+}
+
+
  })
 
 
+//Create a variable to reference the activities’ <input type=”checkbox”> elements, and log out the variable to ensure it is what you think it is.
 
-
-
+const checkBoxes= document.querySelectorAll('#activities-box input[type="checkbox"]');
+console.log(checkBoxes);
+//Use the variable that was just created to loop over the activities’ checkboxes.
+checkBoxes.forEach(element => {
+  element.addEventListener('focus', function(){
+    element.parentElement.classList.add('focus');
+  })
+  element.addEventListener('blur', function(){
+    element.parentElement.classList.add('blur');
+  })
+});
 
 
 
