@@ -152,7 +152,7 @@ let bitcoin = document.getElementById('bitcoin');
 let paymentMethod = document.getElementById('payment');
 //when windows load display the payment method to credit-card
 
-console.log(bitcoinP);
+
 window.onload = function() {
   
   paypal.setAttribute('hidden', true);
@@ -200,146 +200,67 @@ function handlePaymentMethod(event){
 }
 document.addEventListener('change', handlePaymentMethod);
 
- 
+ document.querySelector('form').addEventListener('submit', function(event){
+//prevent default from form submission
+event.preventDefault();
+//value of the name input
+var inputNameValue = document.getElementById("name").value;
 
-// input validation
-//email
-let  emailInput = document.querySelector('#email');
-console.log(emailInput);
-//credit card number
-let  creditCardNumber  = document.querySelector('#cc-num');
-
-console.log(creditCardNumber);
-//zip code
-let  zipCode  = document.querySelector('#zip');
-console.log(zipCode);
-//cvv
-let  threeDigitNumber  = document.querySelector('#cvv');
-console.log(threeDigitNumber);
-
-//reference expiration date
-let expirationMonth = document.getElementById("exp-month");
-
-
-//check if namefiled is valid
-
-function validate() {
-  var nameInput = document.getElementById('name').value;
-  const regName = /^[A-Za-z\s]+$/;
-  if (!regName.test(nameInput)) {
-    alert('Please enter your full name (first & last name).');
-    document.getElementById('name').focus();
-    return false;
-  } else {
-    alert('Valid name given.');
-    return true;
-  }
-}
-// EMAIL VALIDATION
-function isValidEmail() {
-  let emailValidation = document.querySelector('#email').value;
-  const rgexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!rgexEmail.test(emailValidation)) {
-    alert('Please enter a valid email address.');
-    document.getElementById('email').focus();
-    return false;
-  } else {
-    alert('Successful logging into the system.');
-    return true;
-  }
-}
-//CREDIT CARD VALIDATION
-function is_creditCard()
-{
-  let  creditCardNumberValidation  = document.querySelector('#cc-num').value;
- regexCardValidation = /^\d{16}$/;
-  
-        if (!regexCardValidation.test(creditCardNumberValidation))
-          {
-            return true;
-          }
-        else
-          {
-            return false;
-          }
-}
-
-
-
-
-
-
-// zip code validation
-
-function zipCodeValidation(){
-  let zip = document.getElementById('zip').value;
-  const zipCodePattern = /^\d{5}$/;
-  if(!zipCodePattern.test(zip)){
-    return false;
-  }else{
-    return true;
-  }
-}
-
-//three to four digit 
-function is_cvvValidation(){
-  let cvv = document.getElementById('cvv').value;
-  const cvvPattern = /^\d{3}$/;
-  if(!cvvPattern.test(cvv)){
-    return false;
-  }else{
-    return true;
-
-  }
-}
-
-var form = document.querySelector('form'); // Replace 'yourForm' with the actual ID of your form
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let target = e.target;
-  function addStyles(nameInput, validate){
-  if(!valid){
-    nameInput.parentElement.classList.add('no-valid');
-    nameInput.parentElement.classList.remove('valid');
-        } else{
-          nameInput.parentElement.classList.add('valid');
-          this.parentElement.classList.remove('no-valid');
-        }
-
-        addStyles(nameInput, validate)
-      }
-
-        function addEmailStyles(emailValidation, isValidEmail){
-          if (!isValidEmail) {
-            //e.preventDefault();
-            emailValidation.parentElement.classList.add('no-valid');
-            emailValidation.parentElement.classList.remove('valid');
-          } else{
-            emailValidation.parentElement.classList.add('valid');
-            emailValidation.parentElement.classList.remove('valid');
-          }
-          addEmailStyles(emailValidation, isValidEmail)
-        }
-  function addPaymentStyles(creditCardNumberValidation, is_creditCard){
-    if(!is_creditCard){
-    e.preventDefault();
-    creditCardNumberValidation.parentElement.add('no-valid');
-    creditCardNumberValidation.parentElement.remove('valid')
-    
-    } else{
-      creditCardNumberValidation.parentElement.add('valid');
-      creditCardNumberValidation.parentElement.remove('no-valid');
+//regex pattern for name 
+const nameRegex = /^[A-Za-z ]+$/;
+const isNameValid=nameRegex.test(inputNameValue);
+console.log("Name Field Value:", inputNameValue);
+    console.log("Is Name Valid:", isNameValid);
+    //check name value is valid
+    if(!isNameValid){
+      //inputfield not valid prevent from submitting
+      event.preventDefault();
+    } else {
+      console.log('form sumitted successfully');
     }
-    addPaymentStyles(creditCardNumberValidation, is_creditCard)
-}
+//value of the email input
+var inputEmailValue = document.getElementById('email').value;
+const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
 
-if(form.checkValidity()){
-  form.submit();
-}
-  
+const isEmailValid = emailRegex.test(inputEmailValue);
+console.log('email field value : ', inputEmailValue );
+console.log('is email field valid :' ,  isEmailValid );
+//check email field is valid
+if(!isEmailValid){
+  event.preventDefault();
+} else {
+  console.log('successful submitted');
 
-}); 
+}
+// const credit card
+const  creditCardValue = document.getElementById('credit-card').value;
+const cardRegex =/^\d{13,16}$/;
+
+
+
+
+
+
+const isCardValid =cardRegex.test(creditCardValue);
+console.log('card field value : ', creditCardValue );
+console.log('is card field valid :', isCardValid );
+
+//check field valid
+if(!isCardValid){
+  event.preventDefault();
+} else {
+  console.log(' form successful submitted');
+}
+ })
+
+
+
+
+
+
+
+
+
 
   
 
