@@ -203,7 +203,7 @@ document.addEventListener('change', handlePaymentMethod);
 
  document.querySelector('form').addEventListener('submit', function(event){
 //prevent default from form submission
-event.preventDefault();
+//event.preventDefault();
 // target the event
 let eventTarget= event.target;
 //value of the name input
@@ -327,10 +327,11 @@ console.log(checkBoxes);
 checkBoxes.forEach(element => {
   element.addEventListener('focus', function(){
     element.parentElement.classList.add('focus');
-  })
-  element.addEventListener('blur', function(){
     element.parentElement.classList.add('blur');
   })
+  //element.addEventListener('blur', function(){
+   // element.parentElement.classList.add('blur');
+  //})
 });
 
 
