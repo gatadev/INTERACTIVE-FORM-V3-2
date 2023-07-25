@@ -297,7 +297,7 @@ if(!isZip){
 }
 //cvv number
 const cvvValue = document.getElementById('cvv').value;
-const cvvRegex= /^[0-9]{3,4}$/;
+const cvvRegex= /^[0-9]{3}$/;
 const isCvv= cvvRegex.test(cvvValue);
 console.log('cvv field value : ', cvvValue );
 console.log('is zip field valid :', isCvv );
