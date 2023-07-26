@@ -218,14 +218,14 @@ console.log("Name Field Value:", inputNameValue);
     if(!isNameValid){
       //inputfield not valid prevent from submitting
       event.preventDefault();
-      eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+      eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='block';
 
     } else {
       console.log('form sumitted successfully');
-      eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+      eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
     }
 //value of the email input
@@ -238,13 +238,13 @@ console.log('is email field valid :' ,  isEmailValid );
 //check email field is valid
 if(!isEmailValid){
   event.preventDefault();
-  eventTarget.parentElement.classList.add('hint');
-  eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
 } else {
   console.log('successful submitted');
-  eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
@@ -264,14 +264,14 @@ console.log('is card field valid :', isCardValid );
 //check field valid
 if(!isCardValid){
   event.preventDefault();
-  eventTarget.parentElement.classList.add('hint');
-  eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
 
 } else {
   console.log(' form successful submitted');
-  eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
@@ -284,13 +284,13 @@ console.log('is zip field valid :', isZip );
 //check validity of zip
 if(!isZip){
   event.preventDefault();
-  eventTarget.parentElement.classList.add('hint');
-  eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
 } else{
   console.log('form submiited suucessfully');
-  eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 
@@ -303,14 +303,14 @@ console.log('cvv field value : ', cvvValue );
 console.log('is zip field valid :', isCvv );
 if(!isCvv){
   event.preventDefault();
-  eventTarget.parentElement.classList.add('hint');
-  eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+  eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
 
 } else {
   console.log('form successfully submitted');
-  eventTarget.parentElement.classList.add('hint');
-      eventTarget.parentElement.classList.remove('hint');
+  eventTarget.parentElement.classList.add('not-valid');
+      eventTarget.parentElement.classList.remove('valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
