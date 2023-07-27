@@ -174,7 +174,7 @@ bitcoin.setAttribute('hidden', true);
   
  
   
- 
+ let hint = document.querySelector('hint');
 
 
 
@@ -219,13 +219,15 @@ console.log("Name Field Value:", inputNameValue);
       //inputfield not valid prevent from submitting
       event.preventDefault();
       eventTarget.parentElement.classList.add('not-valid');
+      
       eventTarget.parentElement.classList.remove('valid');
+      
       eventTarget.parentElement.lastElementChild.style.display='block';
 
     } else {
       console.log('form sumitted successfully');
-      eventTarget.parentElement.classList.add('not-valid');
-      eventTarget.parentElement.classList.remove('valid');
+      eventTarget.parentElement.classList.add('valid');
+     eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
     }
 //value of the email input
@@ -241,10 +243,15 @@ if(!isEmailValid){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
+  // To display the element, add a class that makes it visible
+// To display the element, add a class that makes it visible
+hint.classList.add('visibility');
+
+
 } else {
   console.log('successful submitted');
-  eventTarget.parentElement.classList.add('not-valid');
-      eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.classList.add('valid');
+  eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
@@ -270,8 +277,8 @@ if(!isCardValid){
 
 } else {
   console.log(' form successful submitted');
-  eventTarget.parentElement.classList.add('not-valid');
-      eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.classList.add('valid');
+     eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
@@ -289,8 +296,8 @@ if(!isZip){
   eventTarget.parentElement.lastElementChild.style.display='block';
 } else{
   console.log('form submiited suucessfully');
-  eventTarget.parentElement.classList.add('not-valid');
-      eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.classList.add('valid');
+     eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 
@@ -309,8 +316,8 @@ if(!isCvv){
 
 } else {
   console.log('form successfully submitted');
-  eventTarget.parentElement.classList.add('not-valid');
-      eventTarget.parentElement.classList.remove('valid');
+  eventTarget.parentElement.classList.add('valid');
+      eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
 
 }
