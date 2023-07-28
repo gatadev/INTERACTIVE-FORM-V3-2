@@ -343,6 +343,34 @@ if(!isCvv){
 
 }
 
+function validation(){
+  if(!isNameValid){
+    name_hint.style.display ='block';
+  } else {
+    name_hint.style.display ='none';
+  }
+  if(!isEmailValid){
+    email_hint.style.display='block';
+  } else {
+    email_hint.style.display ='none';
+  }
+  if(!isCardValid){
+    credit_card_hint.style.display='block';
+
+  } else {
+    credit_card_hint.style.display = 'none';
+  }
+  if(!isZip){
+    zip_code_hint.style.display ='block';
+  } else {
+    zip_code_hint.style.display ='inline';
+  }
+  if(!isCvv){
+    three_digit.style.display =' block';
+  } else {
+    three_digit.style.display ='none';
+  }
+} 
 validation();
 
  })
@@ -399,7 +427,7 @@ checkboxes.forEach(element => {
 
 
 // function validation
-function validation(){
+/***function validation(){
   if(!isNameValid){
     name_hint.style.display ='block';
   } else {
@@ -419,7 +447,7 @@ function validation(){
   if(!isZip){
     zip_code_hint.style.display ='block';
   } else {
-    zip_code_hint.style.display ='none';
+    zip_code_hint.style.display ='inline';
   }
   if(!isCvv){
     three_digit.style.display =' block';
@@ -427,4 +455,4 @@ function validation(){
     three_digit.style.display ='none';
   }
 } 
-validation();
+validation(); ***/
