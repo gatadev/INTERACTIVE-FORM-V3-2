@@ -4,7 +4,7 @@ let email_hint = document.getElementById('email-hint');
 let credit_card_hint = document.getElementById('cc-hint');
 let zip_code_hint = document.getElementById('zip-hint');
 let three_digit= document.getElementById('cvv-hint');
-const nameRegex = /^[A-Za-z ]+$/;
+const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
 let isNameValid=nameRegex.test(inputNameValue);
 var inputNameValue = document.getElementById("name").value;
 var inputEmailValue = document.getElementById('email').value;
@@ -246,6 +246,7 @@ console.log("Name Field Value:", inputNameValue);
       eventTarget.parentElement.classList.remove('valid');
       
       eventTarget.parentElement.lastElementChild.style.display='block';
+      validation();
 
     } else {
       console.log('form sumitted successfully');
@@ -267,6 +268,8 @@ if(!isEmailValid){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
+  validation();
+  
   
 
 } else {
@@ -274,6 +277,7 @@ if(!isEmailValid){
   eventTarget.parentElement.classList.add('valid');
   eventTarget.parentElement.classList.remove('not-valid');
       eventTarget.parentElement.lastElementChild.style.display='none';
+      
 
 }
 // const credit card
@@ -295,6 +299,7 @@ if(!isCardValid){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
+  validation();
 
 } else {
   console.log(' form successful submitted');
@@ -315,6 +320,7 @@ if(!isZip){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
+  validation();
 } else{
   console.log('form submiited suucessfully');
   eventTarget.parentElement.classList.add('valid');
@@ -334,6 +340,7 @@ if(!isCvv){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
+  validation();
 
 } else {
   console.log('form successfully submitted');
@@ -345,35 +352,32 @@ if(!isCvv){
 
 function validation(){
   if(!isNameValid){
+    eventTarget.parentElement.classList.remove('valid');
     name_hint.style.display ='block';
-  } else {
-    name_hint.style.display ='none';
-  }
+  } 
   if(!isEmailValid){
+    eventTarget.parentElement.classList.remove('valid');
     email_hint.style.display='block';
-  } else {
-    email_hint.style.display ='none';
-  }
+  } 
   if(!isCardValid){
+    eventTarget.parentElement.classList.remove('valid');
     credit_card_hint.style.display='block';
 
-  } else {
-    credit_card_hint.style.display = 'none';
-  }
+  } 
   if(!isZip){
+    eventTarget.parentElement.classList.remove('valid');
     zip_code_hint.style.display ='block';
-  } else {
-    zip_code_hint.style.display ='inline';
-  }
+  } 
   if(!isCvv){
+    eventTarget.parentElement.classList.remove('valid');
     three_digit.style.display =' block';
-  } else {
-    three_digit.style.display ='none';
-  }
+  } 
 } 
-validation();
+//validation();
+
 
  })
+ 
 
 
 //Create a variable to reference the activities’ <input type=”checkbox”> elements, and log out the variable to ensure it is what you think it is.
@@ -455,4 +459,4 @@ checkboxes.forEach(element => {
     three_digit.style.display ='none';
   }
 } 
-validation(); ***/
+validation(); ****/
