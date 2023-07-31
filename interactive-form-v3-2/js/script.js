@@ -1,3 +1,9 @@
+
+
+
+ 
+
+
 //global variable
 let name_hint = document.getElementById('name-hint');
 let email_hint = document.getElementById('email-hint');
@@ -69,14 +75,7 @@ var hideOtherJobByDefault = function(){
 };
 hideOtherJobByDefault();
 
-
-
-
-
  let colorMenu = document.getElementById('color');
-
- 
- 
 
 
 var hideColorMenuByDefault = function(){
@@ -89,24 +88,11 @@ hideColorMenuByDefault();
 var loopOverOptions = document.querySelectorAll('[data-theme]');
 console.log(loopOverOptions);
 
-
-
-
-
-
-
-
-
-
 //reference to the color section
  var designTheme = document.getElementById('design');//this will grab the design to be manipulate later.
  //console.log(designTheme);
 let designThemeValue =document.getElementById('design').value;
 console.log(designThemeValue);
-
-
-
- 
 
  colorMenu.disabled = true;
  
@@ -126,12 +112,6 @@ console.log(designThemeValue);
           option.style.display= '';
          loopValue.hidden ='true';
          
-      
-         
-
-        
-        
-        
        // option.style.display = clearOutPreviousColor();
       }else{
         option.style.display ='none';
@@ -196,17 +176,6 @@ bitcoin.setAttribute('hidden', true);
   //paymentDisplayMethod.innerHTML= 'Credit Card';
   
 };
-//when windows load display the payment method to credit-card
-
-
-
-  
-  
- 
-  
- 
-
-
 
 
 // function to handle apyment method
@@ -413,7 +382,7 @@ label_cvv.lastElementChild.style.display ='none';
 } 
 //validation();
 
-fiedsetStatus();
+fieldsetStatus();
 
  })
  
@@ -467,30 +436,7 @@ checkBoxes.forEach(element => {
   element.addEventListener('blur', function(){
     element.parentNode.classList.add('blur');
   })
-  let hint= document.querySelector('activities-hint');
-  let fieldset = document.querySelector('fieldset');
-function fieldsetStatus(){
-
-
-  if (fieldset) {
-    
-  
-    fieldset.classList.add('valid');
-    fieldset.classList.remove('not-valid');
-    hint.style.display ='none'
-    checkBoxesParent.lastElementChild.style.display='none';
-
-    
-  } else {
-  fieldset.classList.add('not-valid');
-    checkBoxesParent.classList.remove('valid');
-    hint.style.display='block';
-    //checkBoxesParent.lastElementChild.style.display='block';
-  }
-
-}
-
-fieldsetStatus();
+ 
 // function validation
 /***function validation(){
   if(!isNameValid){
@@ -522,29 +468,30 @@ fieldsetStatus();
 } 
 validation(); ****/
 });
+let hint= document.querySelector('activities-hint');
+let fieldset = document.querySelector('fieldset');
+
+function fieldsetStatus(){
 
 
-
-
-
-
-
-
-       
-
-
-      
-
-
-
+  if (fieldset) {
+    
   
+    fieldset.classList.add('valid');
+    fieldset.classList.remove('not-valid');
+    hint.style.display ='none'
+    checkBoxesParent.lastElementChild.style.display='none';
 
+    
+  } else {
+  fieldset.classList.add('not-valid');
+    checkBoxesParent.classList.remove('valid');
+    hint.style.display='block';
+    //checkBoxesParent.lastElementChild.style.display='block';
+  }
 
-  
-
-
-
-
+}
+fieldsetStatus();
 
 
 
