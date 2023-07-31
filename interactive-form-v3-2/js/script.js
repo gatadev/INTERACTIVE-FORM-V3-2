@@ -7,6 +7,7 @@ let three_digit= document.getElementById('cvv-hint');
 const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
 let isNameValid=nameRegex.test(inputNameValue);
 var inputNameValue = document.getElementById("name").value;
+var inputNameValueParent = inputNameValue.parentNode;
 var inputEmailValue = document.getElementById('email').value;
 const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
 const  creditCardValue = document.getElementById('cc-num').value;
@@ -21,10 +22,15 @@ const isZip= zipRegex.test(zipValue);
 const cvvValue = document.getElementById('cvv').value;
 const cvvRegex= /^[0-9]{3}$/;
 const isCvv= cvvRegex.test(cvvValue);
-
+let label_name = document.querySelector('label[for = "name"]');
+let label_email = document.querySelector('label[for = "email"]');
+let label_cc_number = document.querySelector('label[for = "cc-num"]');
+let label_zip = document.querySelector('label[for = "zip"]');
+let label_cvv = document.querySelector('label[for = "cvv"]');
 
 //get the value of the input element 
 var inputElement = document.getElementById('name');
+
 // create function for the focus state
 function focusOnFirstForm(){
     var inputName = document.getElementById('name').focus();
@@ -168,6 +174,7 @@ activity.addEventListener('change', (e) => {
   p.innerHTML =`Total:$${initialCost}`;
 });
 let creditCard = document.getElementById('credit-card');
+
 let paypal = document.getElementById('paypal');
 
 let bitcoin = document.getElementById('bitcoin');
@@ -352,37 +359,70 @@ if(!isCvv){
 
 function validation(){
   if(!isNameValid){
-    eventTarget.parentElement.classList.remove('valid');
-    name_hint.style.display ='block';
-  } 
-  if(!isEmailValid){
-    eventTarget.parentElement.classList.remove('valid');
-    email_hint.style.display='block';
-  } 
-  if(!isCardValid){
-    eventTarget.parentElement.classList.remove('valid');
-    credit_card_hint.style.display='block';
+  label_name.classList.add("not-valid");
+  label_name.classList.remove('valid');
+  label_name.lastChild.style.display ='block';
+  } else {
+label_name.classList.add('valid');
+label_name.classList.remove('not-valid');
 
-  } 
+label_name.lastChildElement.style.display='none';
+  }
+  if(!isEmailValid){
+    label_email.classList.add('not-valid');
+    label_email.classList.remove('valid');
+    label_email.lastChildElement.style.display='block';
+  } else {
+    label_email.classList.add('valid');
+    label_email.classList.remove('not-valid');
+    label_email.lastChildElement.style.display='none'
+  }
+  if(!isCardValid){
+    label_cc_number.classList.add('not-valid');
+    label_cc_number.classList.remove('valid');
+    label_cc_number.lastChildElement.style.display ='block';
+    
+  
+
+  } else {
+    label_cc_number.classList.add('valid');
+    label_cc_number.classList.remove('not-valid');
+    
+    label_cc_number.style.display= 'none'
+    
+  }
   if(!isZip){
-    eventTarget.parentElement.classList.remove('valid');
-    zip_code_hint.style.display ='block';
-  } 
+    label_zip.classList.add('not-valid');
+    label_zip.classList.remove('valid');
+    label_zip.lastChildElement.style.display ='block';
+  } else {
+label_zip.classList.add('valid');
+label_zip.classList.remove('not-valid');
+label_zip.lastChildElement.style.display ='none';
+
+  }
   if(!isCvv){
-    eventTarget.parentElement.classList.remove('valid');
-    three_digit.style.display =' block';
-  } 
+    label_cvv.classList.add('not-valid');
+    label_cvv.classList.remove('valid');
+    label_cvv.lastElementChild.style.display ='block';
+  } else {
+label_cvv.classList.add('valid');
+label_cvv.classList.remove('not-valid');
+label_cvv.lastChildElement.style.display ='none';
+  }
 } 
 //validation();
+
 
 
  })
  
 
 
+
 //Create a variable to reference the activities’ <input type=”checkbox”> elements, and log out the variable to ensure it is what you think it is.
 
-const checkBoxes= document.querySelectorAll('#activities-box input[type="checkbox"]');
+const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
 console.log(checkBoxes);
 //Use the variable that was just created to loop over the activities’ checkboxes.
 checkBoxes.forEach(element => {
@@ -412,12 +452,12 @@ checkBoxes.forEach(element => {
 // reference to checkbox
 //reference to activity
 
-const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
-console.log(checkboxes);
+//onst checkBoxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
+
 
 //create two functions -one with focus and another with blur
 // focus state functionh
-checkboxes.forEach(element => {
+checkBoxes.forEach(element => {
   element.addEventListener('focus', function(){
  element.parentNode.classList.add('focus');
  
@@ -426,9 +466,26 @@ checkboxes.forEach(element => {
   element.addEventListener('blur', function(){
     element.parentNode.classList.add('blur');
   })
+  check();
 });
+function check(){
+let isChecked = false;
+for (let  checkBox of checkBoxes) {
+  if (checkBox.checked) {
+    isChecked = true;
+    let checkBoxesParent = checkBoxes.parentNode;
+    checkBoxes.classList.add('valid');
+    checkBoxes.classList.remove('not-valid');
+    checkBoxes.lastChildElement.style.display='none';
 
-
+    
+  } else {
+    checkBoxes.classList.add('not-valid');
+    checkBoxes.classList.remove('not-valid');
+    checkBoxes.lastChildElement.style.display='block';
+  }
+}
+}
 
 // function validation
 /***function validation(){
