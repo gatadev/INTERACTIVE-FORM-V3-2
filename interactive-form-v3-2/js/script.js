@@ -361,7 +361,7 @@ function validation(){
   if(!isNameValid){
   label_name.classList.add("not-valid");
   label_name.classList.remove('valid');
-  label_name.lastChildElement.style.display ='block';
+  label_name.lastElementChild.style.display ='block';
   } else {
 label_name.classList.add('valid');
 label_name.classList.remove('not-valid');
@@ -371,7 +371,7 @@ label_name.lastChildElement.style.display='none';
   if(!isEmailValid){
     label_email.classList.add('not-valid');
     label_email.classList.remove('valid');
-    label_email.lastChildElement.style.display='block';
+    label_email.lastElementChild.style.display='block';
   } else {
     label_email.classList.add('valid');
     label_email.classList.remove('not-valid');
@@ -380,7 +380,7 @@ label_name.lastChildElement.style.display='none';
   if(!isCardValid){
     label_cc_number.classList.add('not-valid');
     label_cc_number.classList.remove('valid');
-    label_cc_number.lastChildElement.style.display ='block';
+    label_cc_number.lastElementChild.style.display ='block';
     
   
 
@@ -394,7 +394,7 @@ label_name.lastChildElement.style.display='none';
   if(!isZip){
     label_zip.classList.add('not-valid');
     label_zip.classList.remove('valid');
-    label_zip.lastChildElement.style.display ='block';
+    label_zip.lastElementChild.style.display ='block';
   } else {
 label_zip.classList.add('valid');
 label_zip.classList.remove('not-valid');
@@ -408,7 +408,7 @@ label_zip.lastChildElement.style.display ='none';
   } else {
 label_cvv.classList.add('valid');
 label_cvv.classList.remove('not-valid');
-label_cvv.lastChildElement.style.display ='none';
+label_cvv.lastElementChild.style.display ='none';
   }
 } 
 //validation();
@@ -467,8 +467,6 @@ checkBoxes.forEach(element => {
   element.addEventListener('blur', function(){
     element.parentNode.classList.add('blur');
   })
-  check();
-});
 function check(){
 let isChecked = false;
 for (let  checkBox of checkBoxes) {
@@ -518,3 +516,5 @@ for (let  checkBox of checkBoxes) {
   }
 } 
 validation(); ****/
+});
+
