@@ -361,7 +361,7 @@ function validation(){
   if(!isNameValid){
   label_name.classList.add("not-valid");
   label_name.classList.remove('valid');
-  label_name.lastChild.style.display ='block';
+  label_name.lastChildElement.style.display ='block';
   } else {
 label_name.classList.add('valid');
 label_name.classList.remove('not-valid');
@@ -423,6 +423,7 @@ label_cvv.lastChildElement.style.display ='none';
 //Create a variable to reference the activities’ <input type=”checkbox”> elements, and log out the variable to ensure it is what you think it is.
 
 const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
+let checkBoxesParent = checkBoxes.parentElement;
 console.log(checkBoxes);
 //Use the variable that was just created to loop over the activities’ checkboxes.
 checkBoxes.forEach(element => {
@@ -473,16 +474,16 @@ let isChecked = false;
 for (let  checkBox of checkBoxes) {
   if (checkBox.checked) {
     isChecked = true;
-    let checkBoxesParent = checkBoxes.parentNode;
-    checkBoxes.classList.add('valid');
-    checkBoxes.classList.remove('not-valid');
-    checkBoxes.lastChildElement.style.display='none';
+  
+    checkBoxesParent.classList.add('valid');
+    checkBoxesParent.classList.remove('not-valid');
+    checkBoxesParent.lastElementChild.style.display='none';
 
     
   } else {
-    checkBoxes.classList.add('not-valid');
-    checkBoxes.classList.remove('not-valid');
-    checkBoxes.lastChildElement.style.display='block';
+    checkBoxesParent.classList.add('not-valid');
+    checkBoxesParent.classList.remove('not-valid');
+    checkBoxesParent.lastElementChild.style.display='block';
   }
 }
 }
