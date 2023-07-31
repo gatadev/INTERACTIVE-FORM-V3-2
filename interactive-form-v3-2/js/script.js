@@ -413,7 +413,7 @@ label_cvv.lastElementChild.style.display ='none';
 } 
 //validation();
 
-
+fiedsetStatus();
 
  })
  
@@ -467,25 +467,30 @@ checkBoxes.forEach(element => {
   element.addEventListener('blur', function(){
     element.parentNode.classList.add('blur');
   })
-function check(){
-let isChecked = false;
-for (let  checkBox of checkBoxes) {
-  if (checkBox.checked) {
-    isChecked = true;
+  let hint= document.querySelector('activities-hint');
+  let fieldset = document.querySelector('fieldset');
+function fieldsetStatus(){
+
+
+  if (fieldset) {
+    
   
-    checkBoxesParent.classList.add('valid');
-    checkBoxesParent.classList.remove('not-valid');
+    fieldset.classList.add('valid');
+    fieldset.classList.remove('not-valid');
+    hint.style.display ='none'
     checkBoxesParent.lastElementChild.style.display='none';
 
     
   } else {
-    checkBoxesParent.classList.add('not-valid');
-    checkBoxesParent.classList.remove('not-valid');
-    checkBoxesParent.lastElementChild.style.display='block';
+  fieldset.classList.add('not-valid');
+    checkBoxesParent.classList.remove('valid');
+    hint.style.display='block';
+    //checkBoxesParent.lastElementChild.style.display='block';
   }
-}
+
 }
 
+fieldsetStatus();
 // function validation
 /***function validation(){
   if(!isNameValid){
@@ -518,3 +523,35 @@ for (let  checkBox of checkBoxes) {
 validation(); ****/
 });
 
+
+
+
+
+
+
+
+       
+
+
+      
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+   
+ 
