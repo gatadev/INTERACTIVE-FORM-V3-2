@@ -382,7 +382,6 @@ label_cvv.lastElementChild.style.display ='none';
 } 
 //validation();
 
-fieldsetStatus();
 
  })
  
@@ -471,7 +470,7 @@ validation(); ****/
 let hint= document.querySelector('activities-hint');
 let fieldset = document.querySelector('fieldset');
 
-function fieldsetStatus(){
+function fieldsetStatus(fieldset){
 
 
   if (fieldset) {
@@ -480,7 +479,7 @@ function fieldsetStatus(){
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
     hint.style.display ='none'
-    checkBoxesParent.lastElementChild.style.display='none';
+    fieldset.lastElementChild.style.display='none';
 
     
   } else {
@@ -492,13 +491,4 @@ function fieldsetStatus(){
 
 }
 fieldsetStatus();
-
-
-
-
-
-
-  
-    
-   
  
