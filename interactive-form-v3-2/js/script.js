@@ -1,7 +1,6 @@
 
 
 
-
  
 
 
@@ -219,7 +218,7 @@ console.log("Name Field Value:", inputNameValue);
       eventTarget.parentElement.classList.remove('valid');
       
       eventTarget.parentElement.lastElementChild.style.display='block';
-      validation();
+
 
     } else {
       console.log('form sumitted successfully');
@@ -241,7 +240,7 @@ if(!isEmailValid){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
-  validation();
+
   
   
 
@@ -272,7 +271,7 @@ if(!isCardValid){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
-  validation();
+
 
 } else {
   console.log(' form successful submitted');
@@ -293,7 +292,7 @@ if(!isZip){
   eventTarget.parentElement.classList.add('not-valid');
   eventTarget.parentElement.classList.remove('valid');
   eventTarget.parentElement.lastElementChild.style.display='block';
-  validation();
+  
 } else{
   console.log('form submiited suucessfully');
   eventTarget.parentElement.classList.add('valid');
@@ -490,9 +489,25 @@ function fieldsetStatus(fieldset){
 fieldsetStatus();***/
  
 
+
+
  
 
 
+
+   
+       
+  
+  
+
+
+
+
+
+  
+
+
+  
 
 
 
