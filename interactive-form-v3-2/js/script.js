@@ -4,41 +4,8 @@
  
 
 
-//global variable
-let name_hint = document.getElementById('name-hint');
-let email_hint = document.getElementById('email-hint');
-let credit_card_hint = document.getElementById('cc-hint');
-let zip_code_hint = document.getElementById('zip-hint');
-let three_digit= document.getElementById('cvv-hint');
 
-
-
-//var inputNameValueParent = inputNameValue.parentNode;
-
-
-
-
-
-
-
-
-
-let label_name = document.querySelector('label[for = "name"]');
-let label_email = document.querySelector('label[for = "email"]');
-let label_cc_number = document.querySelector('label[for = "cc-num"]');
-let label_zip = document.querySelector('label[for = "zip"]');
-let label_cvv = document.querySelector('label[for = "cvv"]');
-
-//get the value of the input element 
-var inputElement = document.getElementById('name');
-
-// create function for the focus state
-function focusOnFirstForm(){
-    var inputName = document.getElementById('name').focus();
-
-}
-focusOnFirstForm();
-//When page load  passing the fucntionon document load 
+ment load 
 window.onload = function (){
   return  focusOnFirstForm()
 
