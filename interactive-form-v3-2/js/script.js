@@ -1,6 +1,7 @@
 
 
 
+
  
 
 
@@ -10,24 +11,19 @@ let email_hint = document.getElementById('email-hint');
 let credit_card_hint = document.getElementById('cc-hint');
 let zip_code_hint = document.getElementById('zip-hint');
 let three_digit= document.getElementById('cvv-hint');
-const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
-let isNameValid=nameRegex.test(inputNameValue);
-var inputNameValue = document.getElementById("name").value;
-var inputNameValueParent = inputNameValue.parentNode;
-var inputEmailValue = document.getElementById('email').value;
-const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
-const  creditCardValue = document.getElementById('cc-num').value;
-const cardRegex =/^\d{13,16}$/;
 
-const isCardValid =cardRegex.test(creditCardValue);
 
-const isEmailValid = emailRegex.test(inputEmailValue);
-const zipValue= document.getElementById('zip').value;
-const zipRegex = /^\d{5}$/;
-const isZip= zipRegex.test(zipValue);
-const cvvValue = document.getElementById('cvv').value;
-const cvvRegex= /^[0-9]{3}$/;
-const isCvv= cvvRegex.test(cvvValue);
+
+//var inputNameValueParent = inputNameValue.parentNode;
+
+
+
+
+
+
+
+
+
 let label_name = document.querySelector('label[for = "name"]');
 let label_email = document.querySelector('label[for = "email"]');
 let label_cc_number = document.querySelector('label[for = "cc-num"]');
@@ -164,6 +160,7 @@ let paymentMethod = document.getElementById('payment');
 
 
 window.onload = function() {
+ 
   
   paypal.setAttribute('hidden', true);
   
@@ -201,16 +198,16 @@ function handlePaymentMethod(event){
 document.addEventListener('change', handlePaymentMethod);
 
  document.querySelector('form').addEventListener('submit', function(event){
-//prevent default from form submission
-//event.preventDefault();
+
+
 // target the event
 let eventTarget= event.target;
 //value of the name input
-//var inputNameValue = document.getElementById("name").value;
+var inputNameValue = document.getElementById("name").value;
 
 //regex pattern for name 
-//const nameRegex = /^[A-Za-z ]+$/;
-//const isNameValid=nameRegex.test(inputNameValue);
+const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+const isNameValid=nameRegex.test(inputNameValue);
 console.log("Name Field Value:", inputNameValue);
     console.log("Is Name Valid:", isNameValid);
     //check name value is valid
@@ -232,10 +229,10 @@ console.log("Name Field Value:", inputNameValue);
     }
 
 //value of the email input
-//var inputEmailValue = document.getElementById('email').value;
-//const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
+let inputEmailValue = document.getElementById('email').value;
+let emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
 
-//const isEmailValid = emailRegex.test(inputEmailValue);
+let isEmailValid = emailRegex.test(inputEmailValue);
 console.log('email field value : ', inputEmailValue );
 console.log('is email field valid :' ,  isEmailValid );
 //check email field is valid
@@ -257,15 +254,15 @@ if(!isEmailValid){
 
 }
 // const credit card
-//const  creditCardValue = document.getElementById('cc-num').value;
-//const cardRegex =/^\d{13,16}$/;
+const  creditCardValue = document.getElementById('cc-num').value;
+const cardRegex =/^\d{13,16}$/;
 
 
 
 
 
 
-//const isCardValid =cardRegex.test(creditCardValue);
+const isCardValid =cardRegex.test(creditCardValue);
 console.log('card field value : ', creditCardValue );
 console.log('is card field valid :', isCardValid );
 
@@ -285,9 +282,9 @@ if(!isCardValid){
 
 }
 // zip
-//const zipValue= document.getElementById('zip').value;
-//const zipRegex = /^\d{5}$/;
-//const isZip= zipRegex.test(zipValue);
+const zipValue= document.getElementById('zip').value;
+const zipRegex = /^\d{5}$/;
+const isZip= zipRegex.test(zipValue);
 console.log('zip field value : ', zipValue );
 console.log('is zip field valid :', isZip );
 //check validity of zip
@@ -306,9 +303,9 @@ if(!isZip){
 
 }
 //cvv number
-//const cvvValue = document.getElementById('cvv').value;
-//const cvvRegex= /^[0-9]{3}$/;
-//const isCvv= cvvRegex.test(cvvValue);
+const cvvValue = document.getElementById('cvv').value;
+const cvvRegex= /^[0-9]{3}$/;
+const isCvv= cvvRegex.test(cvvValue);
 console.log('cvv field value : ', cvvValue );
 console.log('is zip field valid :', isCvv );
 if(!isCvv){
@@ -337,7 +334,7 @@ label_name.classList.remove('not-valid');
 
 label_name.lastChildElement.style.display='none';
   }
-  if(!isEmailValid){
+  if (!isEmailValid){
     label_email.classList.add('not-valid');
     label_email.classList.remove('valid');
     label_email.lastElementChild.style.display='block';
@@ -467,7 +464,7 @@ checkBoxes.forEach(element => {
 } 
 validation(); ****/
 });
-let hint= document.querySelector('activities-hint');
+/***let hint= document.querySelector('activities-hint');
 let fieldset = document.querySelector('fieldset');
 
 function fieldsetStatus(fieldset){
@@ -490,5 +487,13 @@ function fieldsetStatus(fieldset){
   }
 
 }
-fieldsetStatus();
+fieldsetStatus();***/
  
+
+ 
+
+
+
+
+
+
