@@ -23,10 +23,6 @@ let three_digit= document.getElementById('cvv-hint');
 
 
 
-let label_email = document.querySelector('label[for = "email"]');
-let label_cc_number = document.querySelector('label[for = "cc-num"]');
-let label_zip = document.querySelector('label[for = "zip"]');
-let label_cvv = document.querySelector('label[for = "cvv"]');
 
 //get the value of the input element 
 var inputElement = document.getElementById('name');
@@ -194,195 +190,120 @@ function handlePaymentMethod(event){
  
 }
 document.addEventListener('change', handlePaymentMethod);
+// create function for nameInput validation
+function validateName() {
+  let name_hint = document.getElementById('name-hint');
+  const inputNameValue = document.getElementById("name").value;
+  const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  const isNameValid = nameRegex.test(inputNameValue);
+  const labelName = document.querySelector('label[for="name"]');
 
- document.querySelector('form').addEventListener('submit', function(event){
-event.preventDefault();
-
-// target the event
-let eventTarget= event.target;
-//value of the name input
-var inputNameValue = document.getElementById("name").value;
-
-
-//regex pattern for name 
-const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
-const isNameValid=nameRegex.test(inputNameValue);
-console.log("Name Field Value:", inputNameValue);
-    console.log("Is Name Valid:", isNameValid);
-    //check name value is valid
-    if(!isNameValid){
-      //inputfield not valid prevent from submitting
-      event.preventDefault();
-      //label_name.parentElement.classList.add('not-valid');
-      
-      eventTarget.parentElement.classList.remove('valid');
-      
-      eventTarget.parentElement.lastElementChild.style.display='block';
-
-
-    } else {
-      console.log('form sumitted successfully');
-      eventTarget.parentElement.classList.add('valid');
-     eventTarget.parentElement.classList.remove('not-valid');
-      eventTarget.parentElement.lastElementChild.style.display='none';
-    }
-
-//value of the email input
-let inputEmailValue = document.getElementById('email').value;
-let emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
-
-let isEmailValid = emailRegex.test(inputEmailValue);
-console.log('email field value : ', inputEmailValue );
-console.log('is email field valid :' ,  isEmailValid );
-//check email field is valid
-if(!isEmailValid){
-  event.preventDefault();
-  eventTarget.parentElement.classList.add('not-valid');
-  eventTarget.parentElement.classList.remove('valid');
-  eventTarget.parentElement.lastElementChild.style.display='block';
-
-  
-  
-
-} else {
-  console.log('successful submitted');
-  eventTarget.parentElement.classList.add('valid');
-  eventTarget.parentElement.classList.remove('not-valid');
-      eventTarget.parentElement.lastElementChild.style.display='none';
-      
-
-}
-// const credit card
-const  creditCardValue = document.getElementById('cc-num').value;
-const cardRegex =/^\d{13,16}$/;
-
-
-
-
-
-
-const isCardValid =cardRegex.test(creditCardValue);
-console.log('card field value : ', creditCardValue );
-console.log('is card field valid :', isCardValid );
-
-//check field valid
-if(!isCardValid){
-  event.preventDefault();
-  eventTarget.parentElement.classList.add('not-valid');
-  eventTarget.parentElement.classList.remove('valid');
-  eventTarget.parentElement.lastElementChild.style.display='block';
-
-
-} else {
-  console.log(' form successful submitted');
-  eventTarget.parentElement.classList.add('valid');
-     eventTarget.parentElement.classList.remove('not-valid');
-      eventTarget.parentElement.lastElementChild.style.display='none';
-
-}
-// zip
-const zipValue= document.getElementById('zip').value;
-const zipRegex = /^\d{5}$/;
-const isZip= zipRegex.test(zipValue);
-console.log('zip field value : ', zipValue );
-console.log('is zip field valid :', isZip );
-//check validity of zip
-if(!isZip){
-  event.preventDefault();
-  eventTarget.parentElement.classList.add('not-valid');
-  eventTarget.parentElement.classList.remove('valid');
-  eventTarget.parentElement.lastElementChild.style.display='block';
-  
-} else{
-  console.log('form submiited suucessfully');
-  eventTarget.parentElement.classList.add('valid');
-     eventTarget.parentElement.classList.remove('not-valid');
-      eventTarget.parentElement.lastElementChild.style.display='none';
-
-
-}
-//cvv number
-const cvvValue = document.getElementById('cvv').value;
-const cvvRegex= /^[0-9]{3}$/;
-const isCvv= cvvRegex.test(cvvValue);
-console.log('cvv field value : ', cvvValue );
-console.log('is zip field valid :', isCvv );
-if(!isCvv){
-  event.preventDefault();
-  eventTarget.parentElement.classList.add('not-valid');
-  eventTarget.parentElement.classList.remove('valid');
-  eventTarget.parentElement.lastElementChild.style.display='block';
-  validation();
-
-} else {
-  console.log('form successfully submitted');
-  eventTarget.parentElement.classList.add('valid');
-      eventTarget.parentElement.classList.remove('not-valid');
-      eventTarget.parentElement.lastElementChild.style.display='none';
-
-}
-
-function validation(){
-  event.preventDefault();
-  if(!isNameValid){
-    let label_name = document.querySelector('label[for = "name"]');
-  label_name.classList.add("not-valid");
-  label_name.classList.remove('valid');
-  label_name.lastElementChild.style.display ='block';
-  } else {
-label_name.classList.add('valid');
-label_name.classList.remove('not-valid');
-
-label_name.lastChildElement.style.display='none';
-  }
-  if (!isEmailValid){
-    label_email.classList.add('not-valid');
-    label_email.classList.remove('valid');
-    label_email.lastElementChild.style.display='block';
-  } else {
-    label_email.classList.add('valid');
-    label_email.classList.remove('not-valid');
-    label_email.lastChildElement.style.display='none'
-  }
-  if(!isCardValid){
-    label_cc_number.classList.add('not-valid');
-    label_cc_number.classList.remove('valid');
-    label_cc_number.lastElementChild.style.display ='block';
+  if (!isNameValid) {
     
-  
-
+    labelName.classList.add("not-valid");
+    labelName.classList.remove("valid");
+    labelName.lastElementChild.style.display = "block";
   } else {
-    label_cc_number.classList.add('valid');
-    label_cc_number.classList.remove('not-valid');
-    
-    label_cc_number.style.display= 'none'
-    
+   
+    labelName.classList.add("valid");
+    labelName.classList.remove("not-valid");
+    labelName.lastElementChild.style.display = "none";
   }
-  if(!isZip){
-    label_zip.classList.add('not-valid');
-    label_zip.classList.remove('valid');
-    label_zip.lastElementChild.style.display ='block';
+
+  return isNameValid;
+}
+
+// Function to validate the email field
+function validateEmail() {
+  const inputEmailValue = document.getElementById("email").value;
+  const emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+  const isEmailValid = emailRegex.test(inputEmailValue);
+  const labelEmail = document.querySelector('label[for="email"]');
+
+  if (!isEmailValid) {
+    labelEmail.classList.add("not-valid");
+    labelEmail.classList.remove("valid");
+    labelEmail.lastElementChild.style.display = "block";
   } else {
-label_zip.classList.add('valid');
-label_zip.classList.remove('not-valid');
-label_zip.lastChildElement.style.display ='none';
-
+    labelEmail.classList.add("valid");
+    labelEmail.classList.remove("not-valid");
+    labelEmail.lastElementChild.style.display = "none";
   }
-  if(!isCvv){
-    label_cvv.classList.add('not-valid');
-    label_cvv.classList.remove('valid');
-    label_cvv.lastElementChild.style.display ='block';
+
+  return isEmailValid;
+}
+
+// Function to validate the credit card field
+function validateCreditCard() {
+  const creditCardValue = document.getElementById("cc-num").value;
+  const cardRegex = /^\d{13,16}$/;
+  const isCardValid = cardRegex.test(creditCardValue);
+  const labelCCNumber = document.querySelector('label[for="cc-num"]');
+
+  if (!isCardValid) {
+    labelCCNumber.classList.add("not-valid");
+    labelCCNumber.classList.remove("valid");
+    labelCCNumber.lastElementChild.style.display = "block";
   } else {
-label_cvv.classList.add('valid');
-label_cvv.classList.remove('not-valid');
-label_cvv.lastElementChild.style.display ='none';
+    labelCCNumber.classList.add("valid");
+    labelCCNumber.classList.remove("not-valid");
+    labelCCNumber.lastElementChild.style.display = "none";
   }
-} 
-//validation();
 
+  return isCardValid;
+}
+function validateZip() {
+  const zipValue = document.getElementById("zip").value;
+  const zipRegex = /^\d{5}$/;
+  const isZipValid = zipRegex.test(zipValue);
+  const labelZip = document.querySelector('label[for="zip"]');
 
- })
- 
+  if (!isZipValid) {
+    labelZip.classList.add("not-valid");
+    labelZip.classList.remove("valid");
+    labelZip.lastElementChild.style.display = "block";
+  } else {
+    labelZip.classList.add("valid");
+    labelZip.classList.remove("not-valid");
+    labelZip.lastElementChild.style.display = "none";
+  }
+
+  return isZipValid;
+}
+// Function to validate the CVV field
+function validateCVV() {
+  const cvvValue = document.getElementById("cvv").value;
+  const cvvRegex = /^[0-9]{3}$/;
+  const isCvvValid = cvvRegex.test(cvvValue);
+  const labelCvv = document.querySelector('label[for="cvv"]');
+
+  if (!isCvvValid) {
+    labelCvv.classList.add("not-valid");
+    labelCvv.classList.remove("valid");
+    labelCvv.lastElementChild.style.display = "block";
+  } else {
+    labelCvv.classList.add("valid");
+    labelCvv.classList.remove("not-valid");
+    labelCvv.lastElementChild.style.display = "none";
+  }
+
+  return isCvvValid;
+}
+// Add submit event listener to the form
+document.querySelector("form").addEventListener("submit", function (event) {
+  // Validate each field and prevent form submission if any field is invalid
+  const isNameValid = validateName();
+  const isEmailValid = validateEmail();
+  const isCardValid = validateCreditCard();
+  const isZipValid = validateZip();
+  const isCvvValid = validateCVV();
+
+  if (!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid) {
+    event.preventDefault();
+  } else {
+    console.log("Form submitted successfully");
+  }
+});
 
 
 
@@ -397,29 +318,9 @@ checkBoxes.forEach(element => {
     element.parentElement.classList.add('focus');
     element.parentElement.classList.remove('blur');
   })
-  //element.addEventListener('blur', function(){
-   // element.parentElement.classList.add('blur');
-  //})
+  
 });
 
-
-
-
-
-  
-
-
-
-
-
-//Accessibility
-//create function name hasfoucs()
-//add focus class 
-
-// reference to checkbox
-//reference to activity
-
-//onst checkBoxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
 
 
 //create two functions -one with focus and another with blur
@@ -434,36 +335,7 @@ checkBoxes.forEach(element => {
     element.parentNode.classList.add('blur');
   })
  
-// function validation
-/***function validation(){
-  if(!isNameValid){
-    name_hint.style.display ='block';
-  } else {
-    name_hint.style.display ='none';
-  }
-  if(!isEmailValid){
-    email_hint.style.display='block';
-  } else {
-    email_hint.style.display ='none';
-  }
-  if(!isCardValid){
-    credit_card_hint.style.display='block';
 
-  } else {
-    credit_card_hint.style.display = 'none';
-  }
-  if(!isZip){
-    zip_code_hint.style.display ='block';
-  } else {
-    zip_code_hint.style.display ='inline';
-  }
-  if(!isCvv){
-    three_digit.style.display =' block';
-  } else {
-    three_digit.style.display ='none';
-  }
-} 
-validation(); ****/
 });
 /***let hint= document.querySelector('activities-hint');
 let fieldset = document.querySelector('fieldset');
@@ -488,32 +360,12 @@ function fieldsetStatus(fieldset){
   }
 
 }
-fieldsetStatus();***/
+fieldsetStatus(); ***/
  
-
-
- 
-
-
 
 
 
  
-        
-  
-  
-
- 
-      
-
-  
-
-  
-
-
-
-
-
 
 
 
