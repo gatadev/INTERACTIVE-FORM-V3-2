@@ -289,6 +289,23 @@ function validateCVV() {
 
   return isCvvValid;
 }
+ //function to validate fieldset 
+ function fieldsetValidation(){
+  const fieldset = document.querySelector('fieldset');
+  let isInitialCost = true;
+  const activities_hint = document.getElementById('activities-hint').testContent();
+
+  if(!isInitialCost){
+    fieldset.classList.add('not-valid');
+    fieldset.classList.remove('valid');
+    activities_hint.style.display = 'block';
+  }else {
+    fieldset.classList.add('valid');
+    fieldset.classList.remove('not-valid');
+    activities_hint.style.display = 'none';
+  }
+return isInitialCost;
+ }
 // Add submit event listener to the form
 document.querySelector("form").addEventListener("submit", function (event) {
   // Validate each field and prevent form submission if any field is invalid
@@ -297,8 +314,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
   const isCardValid = validateCreditCard();
   const isZipValid = validateZip();
   const isCvvValid = validateCVV();
+  const isInitialCost= fieldsetValidation();
 
-  if (!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid) {
+  if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || isInitialCost){
     event.preventDefault();
   } else {
     console.log("Form submitted successfully");
@@ -366,28 +384,5 @@ fieldsetStatus(); ***/
 
 
  
-
-
-
-
- 
-
-
-
-   
-       
-  
-  
-
-
-
-
-
-  
-
-
-  
-
-
 
 
