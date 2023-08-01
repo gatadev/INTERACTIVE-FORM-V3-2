@@ -4,8 +4,40 @@
  
 
 
+//global variable
+let name_hint = document.getElementById('name-hint');
+let email_hint = document.getElementById('email-hint');
+let credit_card_hint = document.getElementById('cc-hint');
+let zip_code_hint = document.getElementById('zip-hint');
+let three_digit= document.getElementById('cvv-hint');
 
-ment load 
+
+
+//var inputNameValueParent = inputNameValue.parentNode;
+
+
+
+
+
+
+
+
+
+let label_email = document.querySelector('label[for = "email"]');
+let label_cc_number = document.querySelector('label[for = "cc-num"]');
+let label_zip = document.querySelector('label[for = "zip"]');
+let label_cvv = document.querySelector('label[for = "cvv"]');
+
+//get the value of the input element 
+var inputElement = document.getElementById('name');
+
+// create function for the focus state
+function focusOnFirstForm(){
+    var inputName = document.getElementById('name').focus();
+
+}
+focusOnFirstForm();
+//When page load  passing the fucntionon document load 
 window.onload = function (){
   return  focusOnFirstForm()
 
@@ -44,7 +76,7 @@ var hideColorMenuByDefault = function(){
   return colorMenu.setAttribute('disabled', true);
 };
 hideColorMenuByDefault();
-
+ 
 //let's create function to loop over color menus then clear out the last previous color on the form based on it index
 
 var loopOverOptions = document.querySelectorAll('[data-theme]');
@@ -164,12 +196,13 @@ function handlePaymentMethod(event){
 document.addEventListener('change', handlePaymentMethod);
 
  document.querySelector('form').addEventListener('submit', function(event){
-
+event.preventDefault();
 
 // target the event
 let eventTarget= event.target;
 //value of the name input
 var inputNameValue = document.getElementById("name").value;
+
 
 //regex pattern for name 
 const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
@@ -180,7 +213,7 @@ console.log("Name Field Value:", inputNameValue);
     if(!isNameValid){
       //inputfield not valid prevent from submitting
       event.preventDefault();
-      eventTarget.parentElement.classList.add('not-valid');
+      //label_name.parentElement.classList.add('not-valid');
       
       eventTarget.parentElement.classList.remove('valid');
       
@@ -290,7 +323,9 @@ if(!isCvv){
 }
 
 function validation(){
+  event.preventDefault();
   if(!isNameValid){
+    let label_name = document.querySelector('label[for = "name"]');
   label_name.classList.add("not-valid");
   label_name.classList.remove('valid');
   label_name.lastElementChild.style.display ='block';
@@ -455,6 +490,31 @@ function fieldsetStatus(fieldset){
 }
 fieldsetStatus();***/
  
+
+
+ 
+
+
+
+
+
+ 
+        
+  
+  
+
+ 
+      
+
+  
+
+  
+
+
+
+
+
+
 
 
 
