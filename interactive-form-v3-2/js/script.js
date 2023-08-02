@@ -291,20 +291,21 @@ function validateCVV() {
 }
  //function to validate fieldset 
  function fieldsetValidation(){
-  const fieldset = document.querySelector('fieldset');
-  let isInitialCost = true;
+  const fieldset = document.getElementById('activities-cost');
+  let InitialCost = 0;
   const activities_hint = document.getElementById('activities-hint').testContent();
+  const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
 
-  if(!isInitialCost){
-    fieldset.classList.add('not-valid');
-    fieldset.classList.remove('valid');
-    activities_hint.style.display = 'block';
-  }else {
+  if(!InitialCost){
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
+    activities_hint.style.display = 'block';
+  }else {
+    fieldset.classList.add('not-valid');
+    fieldset.classList.remove('valid');
     activities_hint.style.display = 'none';
   }
-return isInitialCost;
+return InitialCost;
  }
 // Add submit event listener to the form
 document.querySelector("form").addEventListener("submit", function (event) {
@@ -316,7 +317,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
   const isCvvValid = validateCVV();
   const isInitialCost= fieldsetValidation();
 
-  if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || isInitialCost){
+  if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || initialCost){
     event.preventDefault();
   } else {
     console.log("Form submitted successfully");
