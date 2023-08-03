@@ -294,13 +294,15 @@ function validateCVV() {
   const activities_hint = document.getElementById('activities-hint');
   const fieldset = document.getElementById('activities-cost');
   
-  const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
-  const check= checkBoxes.checked;
+  const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
+  //const check = Array.from(checkBoxes).some(checkbox => checkbox.checked);
   //const activities = document.getElementById('activities-hint').testContent;
   
 
   if(!check){
+   
     fieldset.classList.add('not-valid');
+
     fieldset.classList.remove('valid');
     activities_hint.style.display = 'block';
   }else {
@@ -384,14 +386,3 @@ function fieldsetStatus(fieldset){
 }
 fieldsetStatus(); ***/
  
-
-
-
- 
-
-
-
-
-
-
-
