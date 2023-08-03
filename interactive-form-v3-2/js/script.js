@@ -291,8 +291,9 @@ function validateCVV() {
 }
  //function to validate fieldset 
  function fieldsetValidation(){
+  const activities_hint = document.getElementById('activities-hint');
   const fieldset = document.getElementById('activities-cost');
-  const activities_hint = document.getElementById('activities-hint').testContent();
+  
   const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
   const check= checkBoxes.checked;
   //const activities = document.getElementById('activities-hint').testContent;
@@ -383,3 +384,14 @@ function fieldsetStatus(fieldset){
 }
 fieldsetStatus(); ***/
  
+
+
+
+ 
+
+
+
+
+
+
+
