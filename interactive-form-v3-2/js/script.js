@@ -9,6 +9,11 @@
  
 
 
+
+
+ 
+
+
 //global variable
 let name_hint = document.getElementById('name-hint');
 let email_hint = document.getElementById('email-hint');
@@ -302,7 +307,7 @@ function validateCVV() {
   
   const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
   const check = Array.from(checkboxes).some(checkbox => checkbox.checked);
-  //const activities = document.getElementById('activities-hint').testContent;
+ 
   
 
   if(!check){
@@ -311,11 +316,12 @@ function validateCVV() {
 
     fieldset.classList.remove('valid');
  activities_hint.style.display = 'block';
- fieldset.innerHTML ='';
+
   }else {
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
     activities_hint.style.display = 'none';
+   
 
 
   }
@@ -334,7 +340,8 @@ document.querySelector("form").addEventListener("submit", function (event) {
   if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || !check){
     event.preventDefault();
   } else {
-  console.log('form successfully submit');
+   //console.log('form submittes successfully');
+   
   }
 });
 
@@ -342,7 +349,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 
 //Create a variable to reference the activities’ <input type=”checkbox”> elements, and log out the variable to ensure it is what you think it is.
 
-const checkBoxes= document.querySelectorAll('#activities-box input[type="checkBox"]');
+const checkBoxes= document.querySelectorAll('#activities-box input[type="checkbox"]');
 let checkBoxesParent = checkBoxes.parentElement;
 console.log(checkBoxes);
 //Use the variable that was just created to loop over the activities’ checkboxes.
@@ -358,40 +365,16 @@ checkBoxes.forEach(element => {
 
 //create two functions -one with focus and another with blur
 // focus state functionh
-checkBoxes.forEach(element => {
-  element.addEventListener('focus', function(){
- element.parentNode.classList.add('focus');
+//checkboxes.forEach(element => {
+ // element.addEventListener('focus', function(){
+// element.parentNode.classList.add('focus');
  
 
-  })
-  element.addEventListener('blur', function(){
-    element.parentNode.classList.add('blur');
-  })
+ // })
+ // element.addEventListener('blur', function(){
+    //element.parentNode.classList.add('blur');
+  //})
  
 
-});
-/***let hint= document.querySelector('activities-hint');
-let fieldset = document.querySelector('fieldset');
-
-function fieldsetStatus(fieldset){
-
-
-  if (fieldset) {
-    
-  
-    fieldset.classList.add('valid');
-    fieldset.classList.remove('not-valid');
-    hint.style.display ='none'
-    fieldset.lastElementChild.style.display='none';
-
-    
-  } else {
-  fieldset.classList.add('not-valid');
-    checkBoxesParent.classList.remove('valid');
-    hint.style.display='block';
-    //checkBoxesParent.lastElementChild.style.display='block';
-  }
-
-}
-fieldsetStatus(); ***/
+//});
  
