@@ -4,6 +4,11 @@
  
 
 
+
+
+ 
+
+
 //global variable
 let name_hint = document.getElementById('name-hint');
 let email_hint = document.getElementById('email-hint');
@@ -291,11 +296,12 @@ function validateCVV() {
 }
  //function to validate fieldset 
  function fieldsetValidation(){
+  
   const activities_hint = document.getElementById('activities-hint');
   const fieldset = document.getElementById('activities-cost');
   
   const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
-  //const check = Array.from(checkBoxes).some(checkbox => checkbox.checked);
+  const check = Array.from(checkboxes).some(checkbox => checkbox.checked);
   //const activities = document.getElementById('activities-hint').testContent;
   
 
@@ -304,11 +310,14 @@ function validateCVV() {
     fieldset.classList.add('not-valid');
 
     fieldset.classList.remove('valid');
-    activities_hint.style.display = 'block';
+ activities_hint.style.display = 'block';
+ fieldset.innerHTML ='';
   }else {
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
     activities_hint.style.display = 'none';
+
+
   }
 return check;
  }
@@ -325,7 +334,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
   if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || !check){
     event.preventDefault();
   } else {
-    console.log("Form submitted successfully");
+  console.log('form successfully submit');
   }
 });
 
