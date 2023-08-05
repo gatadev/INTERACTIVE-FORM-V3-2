@@ -4,16 +4,6 @@
  
 
 
-
-
- 
-
-
-
-
- 
-
-
 //global variable
 let name_hint = document.getElementById('name-hint');
 let email_hint = document.getElementById('email-hint');
@@ -204,7 +194,7 @@ document.addEventListener('change', handlePaymentMethod);
 function validateName() {
   let name_hint = document.getElementById('name-hint');
   const inputNameValue = document.getElementById("name").value;
-  const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  const nameRegex = /^[a-zA-Z\s]+$/;
   const isNameValid = nameRegex.test(inputNameValue);
   const labelName = document.querySelector('label[for="name"]');
 
@@ -303,7 +293,7 @@ function validateCVV() {
  function fieldsetValidation(){
   
   const activities_hint = document.getElementById('activities-hint');
-  const fieldset = document.getElementById('activities-cost');
+  const fieldset = document.getElementById('activities');
   
   const checkboxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
   const check = Array.from(checkboxes).some(checkbox => checkbox.checked);
@@ -315,12 +305,12 @@ function validateCVV() {
     fieldset.classList.add('not-valid');
 
     fieldset.classList.remove('valid');
- activities_hint.style.display = 'block';
+ fieldset.style.display = 'block';
 
   }else {
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
-    activities_hint.style.display = 'none';
+    fieldset.style.display = 'none';
    
 
 
@@ -378,3 +368,18 @@ checkBoxes.forEach(element => {
 
 //});
  
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
