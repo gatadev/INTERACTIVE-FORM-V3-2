@@ -368,9 +368,3 @@ checkBoxes.forEach(element => {
 
 //});
  
-
-
-
- 
-
-
