@@ -305,12 +305,12 @@ function validateCVV() {
     fieldset.classList.add('not-valid');
 
     fieldset.classList.remove('valid');
- fieldset.style.display = 'block';
+ //fieldset.style.display = 'block';
 
   }else {
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
-    fieldset.style.display = 'none';
+   // fieldset.style.display = 'none';
    
 
 
@@ -373,13 +373,4 @@ checkBoxes.forEach(element => {
 
  
 
-
-
-
- 
-
-
-
-
- 
 
