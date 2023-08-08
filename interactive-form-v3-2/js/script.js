@@ -1,28 +1,10 @@
 
-
-
- 
-
-
 //global variable
 let name_hint = document.getElementById('name-hint');
 let email_hint = document.getElementById('email-hint');
 let credit_card_hint = document.getElementById('cc-hint');
 let zip_code_hint = document.getElementById('zip-hint');
 let three_digit= document.getElementById('cvv-hint');
-
-
-
-//var inputNameValueParent = inputNameValue.parentNode;
-
-
-
-
-
-
-
-
-
 
 //get the value of the input element 
 var inputElement = document.getElementById('name');
@@ -90,19 +72,19 @@ console.log(designThemeValue);
  designTheme.addEventListener('change', (e) =>{
    colorMenu.disabled = false;
    
-   //console.log('Selected Design: ', designTheme.value);
+   
    loopOverOptions.forEach(option => {
     
       var loopValue = e.target.value;
       console.log('here is the value ', loopValue);
       dataTheme = option.getAttribute('data-theme');
-      //console.log('Color Options Theme: ', dataTheme);
+      
       if( loopValue === dataTheme){
        
           option.style.display= '';
          loopValue.hidden ='true';
          
-       // option.style.display = clearOutPreviousColor();
+       
       }else{
         option.style.display ='none';
         colorMenu.disabled = false;
@@ -164,7 +146,7 @@ bitcoin.setAttribute('hidden', true);
   
   
 
-  //paymentDisplayMethod.innerHTML= 'Credit Card';
+  
   
 };
 
@@ -305,12 +287,12 @@ function validateCVV() {
     fieldset.classList.add('not-valid');
 
     fieldset.classList.remove('valid');
- //fieldset.style.display = 'block';
+ 
 
   }else {
     fieldset.classList.add('valid');
     fieldset.classList.remove('not-valid');
-   // fieldset.style.display = 'none';
+   
    
 
 
@@ -330,7 +312,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
   if(!isNameValid || !isEmailValid || !isCardValid || !isZipValid || !isCvvValid || !check){
     event.preventDefault();
   } else {
-   //console.log('form submittes successfully');
+   
    
   }
 });
@@ -346,25 +328,26 @@ console.log(checkBoxes);
 checkBoxes.forEach(element => {
   element.addEventListener('focus', function(){
     element.parentElement.classList.add('focus');
-    element.parentElement.classList.remove('blur');
+    
+    
+    
+  })
+  element.addEventListener('blur', function(){
+    element.parentElement.classList.remove('focus');
+    
+    
   })
   
 });
 
 
-
-//create two functions -one with focus and another with blur
-// focus state functionh
-//checkboxes.forEach(element => {
- // element.addEventListener('focus', function(){
-// element.parentNode.classList.add('focus');
+      
+    
+        
+    
+    
  
 
- // })
- // element.addEventListener('blur', function(){
-    //element.parentNode.classList.add('blur');
-  //})
  
 
-//});
  
